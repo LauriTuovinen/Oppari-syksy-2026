@@ -10,8 +10,9 @@ import {
   TabsIndicator,
 } from '@/components/ui/tabs';
 import {
-  Camera,
+  User,
   Home,
+  MapPinSearch
 } from 'lucide-react-native';
 import { Icon, EditIcon, FavouriteIcon } from '@/components/ui/icon';
 import { Box } from '@/components/ui/box';
@@ -22,16 +23,16 @@ export default function Index() {
         <Tabs defaultValue="home">
           <TabsList className="rounded-none">
             <TabsTrigger value="home">
-              <Icon as={EditIcon} size="lg" />
+              <Icon as={Home} size="lg" />
             </TabsTrigger>
             <TabsTrigger value="places">
-              <Icon as={EditIcon} size="lg" />
+              <Icon as={MapPinSearch} size="lg" />
             </TabsTrigger>
               <TabsTrigger value="saved">
               <Icon as={FavouriteIcon} size="lg" />
             </TabsTrigger>
             <TabsTrigger value="profile">
-              <Icon as={EditIcon} size="lg" />
+              <Icon as={User} size="lg" />
             </TabsTrigger>
             <TabsIndicator />
           </TabsList>
@@ -39,13 +40,13 @@ export default function Index() {
           <TabsContentWrapper>
             <TabsContent value="home">
               <Box className="p-4">
-                <Icon as={EditIcon} size="lg" />
+                <Icon as={Home} size="lg" />
                 <Text className="text-foreground">Welcome to the Home tab!</Text>
               </Box>
             </TabsContent>
             <TabsContent value="places">
               <Box className="p-4">
-                <Icon as={EditIcon} size="lg" />
+                <Icon as={MapPinSearch} size="lg" />
                 <Text className="text-foreground">Your places information</Text>
               </Box>
             </TabsContent>            
@@ -57,7 +58,7 @@ export default function Index() {
             </TabsContent>
             <TabsContent value="profile">
               <Box className="p-4">
-                <Icon as={EditIcon} size="lg" />
+                <Icon as={User} size="lg" />
                 <Text className="text-foreground">Your profile information</Text>
               </Box>
             </TabsContent>
