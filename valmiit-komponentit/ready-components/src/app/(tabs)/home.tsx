@@ -3,8 +3,8 @@ import { Text, View, StyleSheet } from 'react-native';
 
 export default function Home() {
   return (
-    <View className="flex-1 items-center justify-center">
-      <Text>Edit src/app/home.tsx to edit this screen.</Text>
+    <View className="bg-[#F6EFFF] flex-1 items-center justify-center">
+      <Text className="text-black text-[24px]">koti näyttö</Text>
     </View>
   );
 }
