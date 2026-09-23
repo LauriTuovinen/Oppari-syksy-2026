@@ -1,47 +1,74 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
-import { HStack } from '@/components/ui/hstack';
 import { Image } from '@/components/ui/image';
 import { Text } from '@/components/ui/text';
-import { VStack } from '@/components/ui/vstack';
+import { FlatList} from '@/components/ui/flat-list';
+import data from './Data.json';
+import { TouchableOpacity } from 'react-native';
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import { View, StatusBar } from 'react-native';
+import { router } from "expo-router";
 
-type ContentCardProps = {
-	imageUri: string;
-	placeName: string;
-	location: string;
-	rating: number;
-	reviewCount: number;
+type Place = {
+  id: number;
+  imageUri: string;
+  placeName: string;
+  location: string;
+  rating: number;
+  reviewCount: number;
+  text: string;
 };
 
-export default function ContentCard({
-	imageUri,
-	placeName,
-	location,
-	rating,
-	reviewCount,
-}: ContentCardProps) {
-	return (
-		<Card size="sm" className="mx-4 my-2 flex-row items-center bg-white shadow-md">
-			<Image
-				source={{ uri: imageUri }}
-				className="h-24 w-24 rounded-xl bg-gray-200"
-			/>
+const DetailsItem = ({ details }: { details: Place }) =>{
+		const NavigateToPlaceDetails = () => {
+			router.push({
+				pathname: "/place-details",
+				params: {
+					id: details.id.toString(),
+					imageUri: details.imageUri,
+					placeName: details.placeName,
+					location: details.location,
+					rating: details.rating.toString(),
+					reviewCount: details.reviewCount.toString(),
+					text: details.text,
+				},
+			});
+		}
 
-			<VStack className="ml-3.5 flex-1">
-				<Text className="mb-1.5 text-lg font-bold text-gray-900" numberOfLines={1}>
-					{placeName}
-				</Text>
-				<Text className="mb-3 text-sm text-gray-500" numberOfLines={1}>
-					{location}
-				</Text>
-				<HStack className="items-center">
-					<Text className="mr-1 text-base text-amber-500">★</Text>
-					<Text className="mr-1.5 text-sm font-semibold text-gray-900">
-						{rating.toFixed(1)}
-					</Text>
-					<Text className="text-xs text-gray-500">({reviewCount} reviews)</Text>
-				</HStack>
-			</VStack>
-		</Card>
-	);
+		return(
+			<TouchableOpacity onPress={NavigateToPlaceDetails}>
+				<View>
+					<Image
+						source={details.imageUri}
+						resizeMode="cover" // This keeps the aspect ratio and fills the box
+					/>
+					<View style={{flex:1, flexDirection: 'row',marginTop: 10,
+					}}>
+						<View style={{flex:2}}>
+							<Text> {details.placeName} </Text>
+							<Text> {details.location} </Text>
+							<Text> {details.rating} ⭐⭐⭐⭐⭐</Text>
+							<Text> {details.reviewCount} </Text>
+						</View>
+					</View>
+				</View>
+			</TouchableOpacity>
+		);
+}
+
+export default function ContentCard() {
+  return (
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <StatusBar />
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <DetailsItem details={item} />
+          )}
+        />
+      </SafeAreaView>
+    </SafeAreaProvider>
+  );
 }

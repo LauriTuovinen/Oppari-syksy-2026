@@ -31,34 +31,7 @@ export default function Home() {
             </View>
           <Text className="text-black font-bold text-2xl text-baseline mt-4 px-4 py-4">Parhaat paikat lähellä</Text>
         </View>
-        <ContentCard 
-          imageUri="https://example.com/image1.jpg"
-          placeName="Paikka 1"
-          location="Sijainti 1"
-          rating={4.5}
-          reviewCount={120}
-        />
-        <ContentCard 
-          imageUri="https://example.com/image1.jpg"
-          placeName="Paikka 1"
-          location="Sijainti 1"
-          rating={4.5}
-          reviewCount={120}
-        />
-        <ContentCard 
-          imageUri="https://example.com/image1.jpg"
-          placeName="Paikka 1"
-          location="Sijainti 1"
-          rating={4.5}
-          reviewCount={120}
-        />
-        <ContentCard 
-          imageUri="https://example.com/image1.jpg"
-          placeName="Paikka 1"
-          location="Sijainti 1"
-          rating={4.5}
-          reviewCount={120}
-        />
+      <ContentCard/>
       </SafeAreaView>
       <SafeAreaView className="bg-[#F6EFFF] flex-1 items-baseline">
       </SafeAreaView>
