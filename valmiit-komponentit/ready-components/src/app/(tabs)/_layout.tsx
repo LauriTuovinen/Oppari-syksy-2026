@@ -21,11 +21,9 @@ export default function TabsLayout() {
 
   return (
   <View className="flex-1">
-    <View className="flex-1">
       <Slot />
-    </View>
 
-    <View className="w-full h-[110px] bg-[#E9DEF3]">
+    <View className="absolute bottom-0 left-0 right-0 h-32 bg-[#E9DEF3]">
       <Tabs
         value={currentTab}
         onValueChange={(value: string) => {
@@ -40,7 +38,7 @@ export default function TabsLayout() {
         variant="underlined"
       >
         <TabsList
-          className="bg-[#E9DEF3] pb-10 w-full"
+          className="bg-[#E9DEF3] w-full"
           contentContainerClassName="w-full flex-row justify-around items-center"
           contentContainerStyle={{ flexGrow: 1, justifyContent: "space-around" }}
         >
