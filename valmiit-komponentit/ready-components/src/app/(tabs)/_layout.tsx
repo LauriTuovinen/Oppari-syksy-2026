@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/tabs";
 import { Icon } from "@/components/ui/icon";
 import { House, MapPinSearch, User } from "lucide-react-native";
+import { ToastProvider } from "@/components/ui/toast";
 
 export default function TabsLayout() {
   const pathname = usePathname();
@@ -20,7 +21,8 @@ export default function TabsLayout() {
         : "home";
 
   return (
-  <View className="flex-1">
+  <ToastProvider>
+  <View className="flex-1 bg-[#F6EFFF]">
       <Slot />
 
     <View className="absolute bottom-0 left-0 right-0 h-32 bg-[#E9DEF3]">
@@ -70,5 +72,6 @@ export default function TabsLayout() {
       </Tabs>
     </View>
   </View>
+  </ToastProvider>
 );
 }

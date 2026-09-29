@@ -49,7 +49,7 @@ export default function ContentCard({ details }: { details: Place }) {
 		}
 
 		return(
-			<TouchableOpacity className='bg-[#F6EFFF]' onPress={NavigateToPlaceDetails}>
+			<TouchableOpacity className='bg-[#F6EFFF] ' onPress={NavigateToPlaceDetails}>
 				<View className='flex-1 items-center bg-[#E9DEF3] m-4 p-4 rounded-2xl'>
 					<Image
 						className="w-full h-50 mb-4"

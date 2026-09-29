@@ -18,14 +18,17 @@ export default function Home() {
         data={data}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <ContentCard details={item} />
+        <ContentCard details={item}/>
         )}
+        contentContainerStyle={{
+          paddingBottom: 100
+        }}
         ListHeaderComponent={
           <>
             <Image
               source={require("@/assets/images/Oulu.jpg")}
               className="w-full h-65"
-              alt="Oulu Image"
+              alt="Oulu"
             />
 
             <View className="bg-[#F6EFFF] items-center">

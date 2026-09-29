@@ -1,16 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, View, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
 import { useLocalSearchParams } from "expo-router";
 import { Image } from '@/components/ui/image';
 import { Icon } from '@/components/ui/icon';
 import { Star, MapPin, Heart } from "lucide-react-native";
-import {
-  Toast,
-  ToastTitle,
-  ToastDescription,
-  useToast,
-} from '@/components/ui/toast';
-import { Button, ButtonText } from '@/components/ui/button';
+import { Text } from '@/components/ui/text';
+import { Toast, ToastTitle, ToastDescription, useToast, } from '@/components/ui/toast';
 
 export default function PlaceDetails() {
   const {
@@ -35,31 +31,66 @@ export default function PlaceDetails() {
 	"Nallikari.jpg": require("../../../assets/images/Nallikari.jpg"),
 	"rotuaari.jpg": require("../../../assets/images/rotuaari.jpg"),
 	"PaskaKaupunni.jpg": require("../../../assets/images/PaskaKaupunni.jpg"),
-};
+  };
+
+  const toast = useToast();
+  const [toastId, setToastId] = useState("");
+  const handleToast = () => {
+    if (!toast.isActive(toastId)) {
+      showNewToast();
+    }
+  };
+  const showNewToast = () => {
+    const newId = Math.random().toString();
+    setToastId(newId);
+    toast.show({
+      id: newId,
+      placement: 'top',
+      duration: 3000,
+      render: ({ id }) => {
+        const uniqueToastId = 'toast-' + id;
+        return (
+          <Toast nativeID={uniqueToastId} action="success" variant="solid">
+            <ToastTitle>Onnistui</ToastTitle>
+            <ToastDescription>
+              Kohde lisätty suosikkeihin
+            </ToastDescription>
+          </Toast>
+        );
+      },
+    });
+  };
 
   return (
-    <View className='flex-1 bg-[#F6EFFF]'>
-      <Image
-        className="w-full h-90 mb-4"
-        source={images[imageName as string]}
-        resizeMode="cover"
-        size='2xl'
-        alt='placeName'
-      />
-      <View className='pt-6 m-4'>
-        <Text className='text-5xl font-bold'>{placeName}</Text>
-        <View className='flex flex-row justify-around w-full'>
-          <View className='flex-1 flex-row'>
-            <Icon as={MapPin} size='xl' className='text-[#44126B]'/>
-            <Text className='text-xl'>{location}</Text>
+    <ScrollView>
+      <View>
+        <Image
+          className="w-full h-100"
+          source={images[imageName as string]}
+          resizeMode="cover"
+          size='2xl'
+          alt='placeName'
+        /> 
+        <View className='bg-[#F6EFFF] rounded-t-4xl -mt-10 px-5 pt-6 pb-10'>
+          <View className='flex-row justify-between items-center w-full'>   
+            <Text className='pt-8 pb-4 text-5xl text-black font-bold'>{placeName}</Text>
+            <TouchableOpacity onPress={handleToast}>
+              <Icon as={Heart} size='xl' fill={'#44126B'} stroke={'#44126B'}></Icon>
+            </TouchableOpacity>
           </View>
-          <View className='flex-1 flex-row'>
-            <Icon as={Star} size='xl' className='text-[#44126B] fill-[#44126B]'/>
-            <Text className='font-bold text-xl'>{rating}</Text>
+          <View className='flex-row justify-between items-center w-full'>
+            <View className='flex-row items-center'>
+              <Icon as={MapPin} size='xl' className='text-[#44126B]'/>
+              <Text className='text-xl text-black'>{location}</Text>
+            </View>
+            <View className='flex-row items-center'>
+              <Icon as={Star} size='xl' className='text-[#44126B] fill-[#44126B]'/>
+              <Text className='font-bold text-xl text-black'>{rating}</Text>
+            </View>
           </View>
+          <Text className='mt-6 text-xl text-black'>{text}</Text>
         </View>
-        <Text className='mt-6 text-xl'>{text}</Text>
       </View>
-    </View>
+    </ScrollView>
   );
 }
