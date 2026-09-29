@@ -7,6 +7,7 @@ import { Icon } from '@/components/ui/icon';
 import { Star, MapPin, Heart } from "lucide-react-native";
 import { Text } from '@/components/ui/text';
 import { Toast, ToastTitle, ToastDescription, useToast, } from '@/components/ui/toast';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 export default function PlaceDetails() {
   const {
@@ -33,64 +34,58 @@ export default function PlaceDetails() {
 	"PaskaKaupunni.jpg": require("../../../assets/images/PaskaKaupunni.jpg"),
   };
 
-  const toast = useToast();
-  const [toastId, setToastId] = useState("");
+  const toast = useToast();  
   const handleToast = () => {
-    if (!toast.isActive(toastId)) {
-      showNewToast();
-    }
-  };
-  const showNewToast = () => {
-    const newId = Math.random().toString();
-    setToastId(newId);
-    toast.show({
-      id: newId,
-      placement: 'top',
-      duration: 3000,
-      render: ({ id }) => {
-        const uniqueToastId = 'toast-' + id;
-        return (
-          <Toast nativeID={uniqueToastId} action="success" variant="solid">
-            <ToastTitle>Onnistui</ToastTitle>
-            <ToastDescription>
-              Kohde lisätty suosikkeihin
-            </ToastDescription>
-          </Toast>
-        );
-      },
-    });
-  };
+  toast.show({
+    placement: "top",
+    duration: 3000,
+    render: ({ id }) => (
+      <Toast nativeID={`toast-${id}`} action="success" variant="solid">
+        <ToastTitle>Onnistui</ToastTitle>
+        <ToastDescription>
+          Kohde lisätty suosikkeihin
+        </ToastDescription>
+      </Toast>
+    ),
+  });
+};
 
   return (
-    <ScrollView>
-      <View>
-        <Image
-          className="w-full h-100"
-          source={images[imageName as string]}
-          resizeMode="cover"
-          size='2xl'
-          alt='placeName'
-        /> 
-        <View className='bg-[#F6EFFF] rounded-t-4xl -mt-10 px-5 pt-6 pb-10'>
-          <View className='flex-row justify-between items-center w-full'>   
-            <Text className='pt-8 pb-4 text-5xl text-black font-bold'>{placeName}</Text>
-            <TouchableOpacity onPress={handleToast}>
-              <Icon as={Heart} size='xl' fill={'#44126B'} stroke={'#44126B'}></Icon>
-            </TouchableOpacity>
-          </View>
-          <View className='flex-row justify-between items-center w-full'>
-            <View className='flex-row items-center'>
-              <Icon as={MapPin} size='xl' className='text-[#44126B]'/>
-              <Text className='text-xl text-black'>{location}</Text>
+    <SafeAreaView className='flex-1' edges={["top"]}>
+      <ScrollView
+      contentContainerStyle={{
+        paddingBottom: 140,
+      }}
+      showsVerticalScrollIndicator={true}>
+        <View>
+          <Image
+            className="w-full h-100"
+            source={images[imageName as string]}
+            resizeMode="cover"
+            size='2xl'
+            alt='placeName'
+          /> 
+          <View className='bg-[#F6EFFF] rounded-t-4xl -mt-10 px-6 pt-6 pb-10'>
+            <View className='flex-row justify-between items-center'>   
+              <Text className='pt-8 pb-4 text-5xl text-black font-bold'>{placeName}</Text>
+              <TouchableOpacity onPress={handleToast}>
+                <Icon as={Heart} size='xl' fill={'#44126B'} stroke={'#44126B'}></Icon>
+              </TouchableOpacity>
             </View>
-            <View className='flex-row items-center'>
-              <Icon as={Star} size='xl' className='text-[#44126B] fill-[#44126B]'/>
-              <Text className='font-bold text-xl text-black'>{rating}</Text>
+            <View className='flex-row justify-between items-center w-full'>
+              <View className='flex-row items-center'>
+                <Icon as={MapPin} size='xl' className='text-[#44126B]'/>
+                <Text className='text-xl text-black'>{location}</Text>
+              </View>
+              <View className='flex-row items-center'>
+                <Icon as={Star} size='xl' className='text-[#44126B] fill-[#44126B]'/>
+                <Text className='font-bold text-xl text-black'>{rating}</Text>
+              </View>
             </View>
+            <Text className='mt-6 text-xl text-black'>{text}</Text>
           </View>
-          <Text className='mt-6 text-xl text-black'>{text}</Text>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
