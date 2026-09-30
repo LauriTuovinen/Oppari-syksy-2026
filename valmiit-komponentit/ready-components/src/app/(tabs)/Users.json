@@ -1,0 +1,38 @@
+[
+  {
+    "userId": 1,
+    "name": "Katri Koodari",
+    "age": "25",
+    "city": "Tampere",
+    "gender":"Nainen",
+    "email": "katri.koodari@gmail.com",
+    "profilePicture": ""
+  },
+    {
+    "userId": 2,
+    "name": "Teppo Testi",
+    "age": "42",
+    "city": "Oulu",
+    "gender":"Mies",
+    "email": "teppo.testi@gmail.com",
+    "profilePicture": ""
+  },
+    {
+    "userId": 3,
+    "name": "Keijo Koodari",
+    "age": "26",
+    "city": "Tampere",
+    "gender":"En halua sanoa",
+    "email": "keijo.koodari@gmail.com",
+    "profilePicture": ""
+  },
+    {
+    "userId": 4,
+    "name": "Aapo heikkilä",
+    "age": "62",
+    "city": "Oulu",
+    "gender":"Mies",
+    "email": "aapo.heikkilä@gmail.com",
+    "profilePicture": ""
+  }
+]
