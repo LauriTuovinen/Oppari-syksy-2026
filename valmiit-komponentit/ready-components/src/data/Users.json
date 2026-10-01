@@ -6,7 +6,7 @@
     "city": "Tampere",
     "gender":"Nainen",
     "email": "katri.koodari@gmail.com",
-    "profilePicture": "",
+    "profilePicture": "profileFemale",
     "password": "Testi123"
   },
     {
@@ -16,7 +16,7 @@
     "city": "Oulu",
     "gender":"Mies",
     "email": "teppo.testi@gmail.com",
-    "profilePicture": "",
+    "profilePicture": "profileMale",
     "password": "Testi123"
   },
     {
@@ -26,17 +26,17 @@
     "city": "Tampere",
     "gender":"En halua sanoa",
     "email": "keijo.koodari@gmail.com",
-    "profilePicture": "",
+    "profilePicture": "profileMale",
     "password": "Testi123"
   },
     {
     "userId": 4,
-    "name": "Aapo heikkilä",
+    "name": "Aapo Heikkilä",
     "age": "62",
     "city": "Oulu",
     "gender":"Mies",
     "email": "aapo.heikkilä@gmail.com",
-    "profilePicture": "",
+    "profilePicture": "AapoHeikkilä.jpg",
     "password": "Testi123"
   }
 ]

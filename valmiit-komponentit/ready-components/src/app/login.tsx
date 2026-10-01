@@ -10,6 +10,7 @@ import { EyeIcon, EyeOffIcon, Icon } from '@/components/ui/icon';
 import { RotateCw, Lock, Mail  } from 'lucide-react-native';
 import { router } from 'expo-router';
 import users from '../data/Users.json';
+import { useUser } from '../context/UserContext';
 
 
 export default function Login() {
@@ -19,6 +20,7 @@ export default function Login() {
   const [error, setError] = React.useState('');
   const [emailError, setEmailError] = React.useState(false);
   const [passError, setPassError] = React.useState(false);
+  const { setUser } = useUser();
 
   const handleState = () => {
     setShowPassword((showState) => {
@@ -49,7 +51,7 @@ export default function Login() {
 
     if (user) {
       console.log('Logged in user:', user);
-
+      setUser(user);
       router.replace('/home');
     } else {
       setError('Virheellinen sähköposti tai salasana');
