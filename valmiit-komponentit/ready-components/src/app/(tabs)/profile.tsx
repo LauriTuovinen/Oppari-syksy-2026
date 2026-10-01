@@ -15,6 +15,8 @@ import {
 import { Heading } from '@/components/ui/heading';
 import { Box } from '@/components/ui/box';
 import { Image } from '@/components/ui/image'
+import { Switch } from '@/components/ui/switch';
+import { Center } from '@/components/ui/center';
 import {
   Tabs,
   TabsList,
@@ -24,6 +26,19 @@ import {
   TabsTriggerText,
   TabsIndicator,
 } from '@/components/ui/tabs';
+import {
+  Select,
+  SelectTrigger,
+  SelectInput,
+  SelectIcon,
+  SelectPortal,
+  SelectBackdrop,
+  SelectContent,
+  SelectDragIndicator,
+  SelectDragIndicatorWrapper,
+  SelectItem,
+} from '@/components/ui/select';
+import { ChevronDownIcon } from '@/components/ui/icon';
 
 const images: Record<string, any> = {
   "profileFemale.jpg": require("../../../assets/images/profileFemale.jpg"),
@@ -41,7 +56,7 @@ export default function Profile() {
   };
 
   return (
-    <View className="flex-1 items-center bg-[#F6EFFF] p-5">
+    <View className="flex-1 items-center bg-[#F6EFFF] p-5 m-4 my-10">
       <Heading>Sinun profiilisi</Heading>
       <Image 
         className="w-full h-50 mb-4"
@@ -67,7 +82,7 @@ export default function Profile() {
         </Text>
       </View>
 
-      <Tabs defaultValue="suosikit">
+      <Tabs variant="underlined" defaultValue="suosikit">
       <TabsList >
         <TabsTrigger value="suosikit">
           <TabsTriggerText>Suosikit</TabsTriggerText>
@@ -80,13 +95,51 @@ export default function Profile() {
        <TabsContentWrapper>
         <TabsContent value="suosikit">
           <Box className="p-4">
-            <Text className="text-foreground">Omat suosikit</Text>
+            <Heading className="text-foreground">Omat suosikit</Heading>
 
           </Box>
         </TabsContent>
         <TabsContent value="asetukset">
           <Box className="p-4">
-            <Text className="text-foreground">Asetukset</Text>
+            <Heading className="text-foreground">Asetukset</Heading>
+              <Center className='flex-row justify-between items-center'>
+                <Text bold={true}>Tumma tila</Text>
+                <Switch
+                  size="md"
+                  isDisabled={false}
+                  trackColor={{ false: '#E9DEF3', true: '#525252' }}
+                  thumbColor="#fafafa"
+                  ios_backgroundColor="#d4d4d4"
+                />
+                </Center>
+                <Center className='flex-row justify-between items-center'>
+                <Text bold={true}>Näytä ikä</Text>
+                <Switch
+                  size="md"
+                  isDisabled={false}
+                  trackColor={{ false: '#E9DEF3', true: '#525252' }}
+                  thumbColor="#fafafa"
+                  ios_backgroundColor="#d4d4d4"
+                />
+              </Center>
+
+              <Select>
+                <SelectTrigger variant="outline" size="md">
+                  <SelectInput placeholder="Näytä sukupuoli" />
+                  <SelectIcon className="mr-3" as={ChevronDownIcon} />
+                </SelectTrigger>
+                <SelectPortal>
+                  <SelectBackdrop />
+                  <SelectContent>
+                    <SelectDragIndicatorWrapper>
+                      <SelectDragIndicator />
+                    </SelectDragIndicatorWrapper>
+                    <SelectItem label="Nainen" value="Nainen" />
+                    <SelectItem label="Mies" value="Mies" />
+                    <SelectItem label="En halua sanoa" value="EnHaluaSanoa" />
+                  </SelectContent>
+                </SelectPortal>
+              </Select>
             <Button
               onPress={() => setShowAlertDialog(true)}
               className="m-auto mt-10 py-4 px-14 rounded-4xl bg-[#791BFD]"
