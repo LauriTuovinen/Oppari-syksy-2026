@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Image } from '@/components/ui/image';
 import { Text } from '@/components/ui/text';
-import { FlatList} from '@/components/ui/flat-list';
+import { FlatList } from '@/components/ui/flat-list';
 import { TouchableOpacity } from 'react-native';
 import { View} from 'react-native';
 import { router } from "expo-router";

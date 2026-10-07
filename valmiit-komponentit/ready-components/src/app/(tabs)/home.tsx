@@ -7,19 +7,30 @@ import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { SearchIcon } from '@/components/ui/icon';
 import { FlatList } from "react-native";
-import data from "./Data.json";
+import data from "../../data/Data.json";
 import ContentCard from "../(tabs)/contentCard";
 
 export default function Home() {
+  const [search, setSearch] = React.useState('');
+
+  const filteredData = data.filter((item) =>
+    item.placeName.toLowerCase().includes(search.toLowerCase())
+    
+  );
   return (
     <SafeAreaView className="bg-[#F6EFFF] flex-1">
       <FlatList
         className='bg-[#F6EFFF]'
-        data={data}
+        data={filteredData}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
         <ContentCard details={item}/>
         )}
+        ListEmptyComponent={
+        <Text className="text-black text-xl text-center mt-10">
+          Haulla ei löytynyt tuloksia
+        </Text>
+      }
         contentContainerStyle={{
           paddingBottom: 100
         }}
@@ -50,6 +61,8 @@ export default function Home() {
                   <InputField
                     className="text-black placeholder:text-gray-200"
                     placeholder="Etsi..."
+                    value={search}
+                    onChangeText={setSearch}
                   />
                 </Input>
               </View>

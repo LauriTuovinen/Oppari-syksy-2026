@@ -6,7 +6,7 @@
     "city": "Tampere",
     "gender":"Nainen",
     "email": "katri.koodari@gmail.com",
-    "profilePicture": "profileFemale",
+    "profilePicture": "profileFemale.jpg",
     "password": "Testi123"
   },
     {
@@ -16,7 +16,7 @@
     "city": "Oulu",
     "gender":"Mies",
     "email": "teppo.testi@gmail.com",
-    "profilePicture": "profileMale",
+    "profilePicture": "profileMale,jpg",
     "password": "Testi123"
   },
     {
@@ -26,7 +26,7 @@
     "city": "Tampere",
     "gender":"En halua sanoa",
     "email": "keijo.koodari@gmail.com",
-    "profilePicture": "profileMale",
+    "profilePicture": "profileMale.jpg",
     "password": "Testi123"
   },
     {
@@ -37,6 +37,6 @@
     "gender":"Mies",
     "email": "aapo.heikkilä@gmail.com",
     "profilePicture": "AapoHeikkilä.jpg",
-    "password": "Testi123"
+    "password": "Testi1234"
   }
 ]
