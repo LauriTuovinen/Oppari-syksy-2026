@@ -35,22 +35,43 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [favourites, setFavourites] = useState<Place[]>([]);
+  const [userFavourites, setUserFavourites] = useState<
+    Record<number, Place[]>
+  >({});
+
+  const favourites = user ? userFavourites[user.userId] ?? [] : [];
 
   const addFavourite = (place: Place) => {
-    setFavourites((current) => {
-      if (current.some((item) => item.id === place.id)) {
+    if (!user) return;
+
+    setUserFavourites((current) => {
+      const currentFavourites = current[user.userId] ?? [];
+
+      // Don't add the same place twice
+      if (currentFavourites.some((item) => item.id === place.id)) {
         return current;
       }
 
-      return [...current, place];
+      return {
+        ...current,
+        [user.userId]: [...currentFavourites, place],
+      };
     });
   };
 
   const removeFavourite = (id: number) => {
-    setFavourites((current) =>
-      current.filter((item) => item.id !== id)
-    );
+    if (!user) return;
+
+    setUserFavourites((current) => {
+      const currentFavourites = current[user.userId] ?? [];
+
+      return {
+        ...current,
+        [user.userId]: currentFavourites.filter(
+          (item) => item.id !== id
+        ),
+      };
+    });
   };
 
   const isFavourite = (id: number) => {
