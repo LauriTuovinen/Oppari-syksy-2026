@@ -21,8 +21,8 @@ export default function PlaceDetails() {
     text,
   } = useLocalSearchParams();
   
- const imageName = Array.isArray(imageUri) ? imageUri[0] : imageUri;
-  
+  const imageName = Array.isArray(imageUri) ? imageUri[0] : imageUri;
+
   const images: Record<string, any> = {
   "Toripolliisi.jpg": require("../../../assets/images/Toripolliisi.jpg"),
   "Nallikarin-majakka.jpg": require("../../../assets/images/Nallikarin-majakka.jpg"),
@@ -35,7 +35,7 @@ export default function PlaceDetails() {
   "PaskaKaupunni.jpg": require("../../../assets/images/PaskaKaupunni.jpg"),
   };
 
-  const toast = useToast();  
+  const toast = useToast();
   const handleToast = () => {
     toast.show({
       placement: "top",

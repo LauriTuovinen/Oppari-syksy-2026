@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, ScrollView } from 'react-native';
 import { useUser } from '../../context/UserContext';
 import { router } from 'expo-router';
 import { Text } from '@/components/ui/text';
@@ -46,8 +46,10 @@ import {
 import { ChevronDownIcon } from '@/components/ui/icon';
 import { Heart } from "lucide-react-native";
 import { Icon } from '@/components/ui/icon';
+import { HStack } from '@/components/ui/hstack';
+import { VStack } from '@/components/ui/vstack';
 
-const images: Record<string, any> = {
+const userImages: Record<string, any> = {
   "profileFemale.jpg": require("../../../assets/images/profileFemale.jpg"),
   "profileMale.jpg": require("../../../assets/images/profileMale.jpg"),
 };
@@ -67,8 +69,10 @@ const images: Record<string, any> = {
 export default function Profile() {
   const { user, setUser, favourites, removeFavourite } = useUser();
   const [showAlertDialog, setShowAlertDialog] = React.useState(false);
+  const [showRemoveDialog, setShowRemoveDialog] = React.useState(false);
+  const [removePlaceId, setRemovePlaceId] = React.useState<number | null>(null);
   const [showAge, setShowAge] = React.useState(true);
-  const handleClose = () => setShowAlertDialog(false);
+  const handleClose = () => { setShowAlertDialog(false); setRemovePlaceId(null); };
 
   const handleSignOut = () => {
     setUser(null);
@@ -84,17 +88,15 @@ export default function Profile() {
     });
   };
 
-  return (
-    <View className="flex-1 bg-[#F6EFFF] p-5 m-4 my-10">
+  return (      
+  <ScrollView>
+    <View className="flex-1 bg-[#F6EFFF] p-5 m-4 my-10 mb-28">
       <Heading size='3xl' className='text-left p-4'>Sinun profiilisi</Heading>
       <Center>
         <Avatar className="bg-pink-600 h-24 w-24">
           <AvatarFallbackText className="text-2xl">{user?.name}</AvatarFallbackText>
             <AvatarImage
-              source={user?.profilePicture
-          ? images[user.profilePicture]
-          : undefined}
-            />
+              source={user?.profilePicture ? userImages[user.profilePicture] : undefined}/>
         </Avatar>
         <Text className="text-3xl font-bold">
           {user?.name}
@@ -129,9 +131,9 @@ export default function Profile() {
         <TabsIndicator />
       </TabsList>
        <TabsContentWrapper>
-        <TabsContent value="suosikit">
+        <TabsContent value="suosikit">            
+          <Heading size='3xl' className="text-foreground text-center pt-4">Omat suosikit</Heading>
           <Box className="pt-4">
-            <Heading size='3xl' className="text-foreground text-center">Omat suosikit</Heading>
             {favourites.length === 0 ? (
               <Text className="text-center text-lg text-gray-500 mt-6">
                 Sinulla ei ole vielä suosikkeja
@@ -139,51 +141,80 @@ export default function Profile() {
             ) : (
               favourites.map((place) => (
                 <TouchableOpacity
-                  key={place.id}
-                  onPress={() =>
-                    router.push({
-                      pathname: '/place-details',
-                      params: {
-                        id: place.id.toString(),
-                        imageUri: place.imageUri,
-                        placeName: place.placeName,
-                        location: place.location,
-                        rating: place.rating.toString(),
-                        reviewCount: place.reviewCount.toString(),
-                        text: place.text,
-                      },
-                    })
-                  }
-                  className="mb-4"
+                key={place.id}
+                onPress={() =>
+                  router.push({
+                    pathname: '/place-details',
+                    params: {
+                      id: place.id.toString(),
+                      imageUri: place.imageUri,
+                      placeName: place.placeName,
+                      location: place.location,
+                      rating: place.rating.toString(),
+                      reviewCount: place.reviewCount.toString(),
+                      text: place.text,
+                    },
+                  })
+                }
+                className="mb-4"
                 >
-                  <Box className="bg-[#E9DEF3] rounded-2xl p-4">
+                  <Box className="bg-[#C8CEE9] rounded-2xl h-40">
+                    <HStack>
                     <Image
                       source={images[place.imageUri]}
-                      className="w-full h-40 rounded-xl"
+                      className="w-40 h-40 rounded-xl"
                       resizeMode="cover"
                       alt={place.placeName}
-                    />
-
-                    <View className="flex-row justify-between items-center mt-3">
-                      <Text className="text-xl font-bold text-black flex-1">
+                      />
+                    <View className="flex-1 min-w-0">
+                      <VStack className='p-4 flex-1'>
+                      <Text className="text-xl font-bold text-black">
                         {place.placeName}
-                      </Text>
-
+                      </Text>  
+                      <HStack className='justify-around '>
+                      <Text className="text-[#7D7D7D] mt-1">
+                        {place.rating}
+                      </Text>                      
                       <TouchableOpacity
-                        onPress={() => removeFavourite(place.id)}
-                      >
+                        onPress={() => setRemovePlaceId(place.id)}
+                        >
                         <Icon
                           as={Heart}
                           size="xl"
                           fill="#44126B"
                           stroke="#44126B"
-                        />
+                          />
                       </TouchableOpacity>
+                      </HStack> 
+                      <Text className="text-[#7D7D7D] mt-1">
+                        {place.location}
+                      </Text>
+
+                        <AlertDialog isOpen={removePlaceId === place.id} onClose={handleClose}>
+                        <AlertDialogBackdrop />
+                        <AlertDialogContent className="bg-[#E9DEF3]">
+                          <AlertDialogHeader>
+                            <Heading className="text-foreground font-semibold text-lg mb-4">
+                              Poista suosikeista
+                            </Heading>
+                          </AlertDialogHeader>                            
+                          <Center>
+                            <Text size='xl' className="mb-4">Poistetaanko kohde suosikeista?</Text>
+                            <AlertDialogFooter className="flex-row justify-center gap-4">
+                              <Button onPress={() => { removeFavourite(place.id); handleClose(); }} className='w-24 bg-[#791BFD] rounded-full'>
+                                <ButtonText>Kyllä</ButtonText>
+                              </Button>
+                              <Button variant="outline" onPress={handleClose} className="w-24 bg-[#906aae] rounded-full">
+                                <ButtonText className='text-white'>ei</ButtonText>
+                              </Button>
+                            </AlertDialogFooter>
+                          </Center>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                      </VStack>
                     </View>
 
-                    <Text className="text-[#7D7D7D] mt-1">
-                      {place.location}
-                    </Text>
+                    </HStack>
                   </Box>
                 </TouchableOpacity>
               ))
@@ -201,7 +232,7 @@ export default function Profile() {
                   trackColor={{ false: '#E9DEF3', true: '#44126B' }}
                   thumbColor="#fafafa"
                   ios_backgroundColor="#d4d4d4"
-                />
+                  />
                 </Center>
                 <Center className='flex-row justify-between'>
                 <Text bold={true}>Näytä ikä</Text>
@@ -219,7 +250,7 @@ export default function Profile() {
               <Select className="bg-[#C8CEE9]"
                 selectedValue={user?.gender}
                 onValueChange={handleGenderChange}
-              >
+                >
                 <SelectTrigger variant="underlined" size="md">
                   <SelectInput className="font-bold text-black" placeholder="Valitse sukupuoli" />
                   <SelectIcon className="mr-3 text-black" as={ChevronDownIcon} />
@@ -267,7 +298,8 @@ export default function Profile() {
           </Box>
         </TabsContent>
       </TabsContentWrapper>
-    </Tabs>
+    </Tabs> 
     </View>
+    </ScrollView>
   );
 }
