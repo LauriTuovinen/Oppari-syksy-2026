@@ -49,8 +49,8 @@ export default function Home() {
             </View>
 
             <View className="bg-[#F6EFFF] w-full">
-              <View className="items-center">
-                <Input className="w-11/12 mt-4 rounded-full px-4 py-1 bg-[#d2a6f4]">
+              <View className="items-center px-6">
+                <Input className="mt-4 rounded-full px-4 py-1 bg-[#d2a6f4]">
                   <InputSlot>
                     <InputIcon
                       className="text-black h-10 w-10"
