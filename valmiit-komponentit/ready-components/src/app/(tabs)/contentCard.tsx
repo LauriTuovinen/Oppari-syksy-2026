@@ -2,13 +2,11 @@ import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Image } from '@/components/ui/image';
 import { Text } from '@/components/ui/text';
-import { FlatList } from '@/components/ui/flat-list';
 import { TouchableOpacity } from 'react-native';
 import { View} from 'react-native';
 import { router } from "expo-router";
 import { Icon } from '@/components/ui/icon';
 import { Star } from "lucide-react-native";
-
 
 type Place = {
   id: number;
@@ -48,27 +46,34 @@ export default function ContentCard({ details }: { details: Place }) {
 			});
 		}
 
-		return(
-			<TouchableOpacity className='bg-[#F6EFFF] ' onPress={NavigateToPlaceDetails}>
-				<View className='flex-1 items-center bg-[#E9DEF3] m-4 p-4 rounded-2xl'>
-					<Image
-						className="w-full h-50 mb-4"
-						source={images[details.imageUri]}
-						resizeMode="cover"
-						size='2xl'
-						alt='placeName'
-					/>
-					<View className='flex-1 flex-row justify-between w-full'>
-						<View className='flex-1 flex-row justify-between w-full'>
-							<Text className='text-black text-2xl font-bold'> {details.placeName} </Text>
-						</View>
-							<Icon as={Star} size="xl" className='text-[#44126B] fill-[#44126B] mt-1' />
-							<Text className='text-black text-2xl font-bold'> {details.rating} </Text>
-					</View>
-					<View className='flex flex-row justify-between w-full'>
-						<Text className='text-[#7D7D7D]'> {details.location} </Text>
-					</View>
-					</View>	
-			</TouchableOpacity>
-		);
+		 return (
+    <TouchableOpacity className="w-full" onPress={NavigateToPlaceDetails}>
+      <Card className="bg-[#E9DEF3] m-4 rounded-2xl">
+        <Image
+          className="w-full h-50 rounded-2xl"
+          source={images[details.imageUri]}
+          resizeMode="cover"
+          alt={details.placeName}
+        />
+        <View className="flex-row items-center w-full">
+          <Text className="text-black text-2xl font-bold flex-1">
+            {details.placeName}
+          </Text>
+          <View className="flex-row items-center">
+            <Icon
+              as={Star}
+              size="xl"
+              className="text-[#44126B] fill-[#44126B]"
+            />
+            <Text className="text-black text-2xl font-bold ml-1">
+              {details.rating}
+            </Text>
+          </View>
+        </View>
+        <Text className="text-[#7D7D7D]">
+          {details.location}
+        </Text>
+      </Card>
+    </TouchableOpacity>
+  );
 }

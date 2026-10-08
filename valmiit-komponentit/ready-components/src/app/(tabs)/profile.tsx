@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { useUser } from '../../context/UserContext';
 import { router } from 'expo-router';
 import { Text } from '@/components/ui/text';
@@ -44,14 +44,28 @@ import {
   AvatarImage,
 } from '@/components/ui/avatar';
 import { ChevronDownIcon } from '@/components/ui/icon';
+import { Heart } from "lucide-react-native";
+import { Icon } from '@/components/ui/icon';
 
 const images: Record<string, any> = {
   "profileFemale.jpg": require("../../../assets/images/profileFemale.jpg"),
   "profileMale.jpg": require("../../../assets/images/profileMale.jpg"),
 };
 
+  const images: Record<string, any> = {
+  "Toripolliisi.jpg": require("../../../assets/images/Toripolliisi.jpg"),
+  "Nallikarin-majakka.jpg": require("../../../assets/images/Nallikarin-majakka.jpg"),
+  "tietomaa.jpg": require("../../../assets/images/tietomaa.jpg"),
+  "Valkea.jpg": require("../../../assets/images/Valkea.jpg"),
+  "Ideapark.jpg": require("../../../assets/images/Ideapark.jpg"),
+  "Ainolanpuisto.jpg": require("../../../assets/images/Ainolanpuisto.jpg"),
+  "Nallikari.jpg": require("../../../assets/images/Nallikari.jpg"),
+  "rotuaari.jpg": require("../../../assets/images/rotuaari.jpg"),
+  "PaskaKaupunni.jpg": require("../../../assets/images/PaskaKaupunni.jpg"),
+  };
+
 export default function Profile() {
-  const { user, setUser } = useUser();
+  const { user, setUser, favourites, removeFavourite } = useUser();
   const [showAlertDialog, setShowAlertDialog] = React.useState(false);
   const [showAge, setShowAge] = React.useState(true);
   const handleClose = () => setShowAlertDialog(false);
@@ -118,7 +132,62 @@ export default function Profile() {
         <TabsContent value="suosikit">
           <Box className="pt-4">
             <Heading size='3xl' className="text-foreground text-center">Omat suosikit</Heading>
+            {favourites.length === 0 ? (
+              <Text className="text-center text-lg text-gray-500 mt-6">
+                Sinulla ei ole vielä suosikkeja
+              </Text>
+            ) : (
+              favourites.map((place) => (
+                <TouchableOpacity
+                  key={place.id}
+                  onPress={() =>
+                    router.push({
+                      pathname: '/place-details',
+                      params: {
+                        id: place.id.toString(),
+                        imageUri: place.imageUri,
+                        placeName: place.placeName,
+                        location: place.location,
+                        rating: place.rating.toString(),
+                        reviewCount: place.reviewCount.toString(),
+                        text: place.text,
+                      },
+                    })
+                  }
+                  className="mb-4"
+                >
+                  <Box className="bg-[#E9DEF3] rounded-2xl p-4">
+                    <Image
+                      source={images[place.imageUri]}
+                      className="w-full h-40 rounded-xl"
+                      resizeMode="cover"
+                      alt={place.placeName}
+                    />
 
+                    <View className="flex-row justify-between items-center mt-3">
+                      <Text className="text-xl font-bold text-black flex-1">
+                        {place.placeName}
+                      </Text>
+
+                      <TouchableOpacity
+                        onPress={() => removeFavourite(place.id)}
+                      >
+                        <Icon
+                          as={Heart}
+                          size="xl"
+                          fill="#44126B"
+                          stroke="#44126B"
+                        />
+                      </TouchableOpacity>
+                    </View>
+
+                    <Text className="text-[#7D7D7D] mt-1">
+                      {place.location}
+                    </Text>
+                  </Box>
+                </TouchableOpacity>
+              ))
+            )}
           </Box>
         </TabsContent>
         <TabsContent value="asetukset">
