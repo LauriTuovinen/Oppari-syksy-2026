@@ -112,3 +112,9 @@
   --color-accent: rgb(var(--accent));
   --color-accent-foreground: rgb(var(--accent-foreground));
 }
+
+@theme {
+  --font-sans: "RobotoMono-Regular";
+  --font-RobotoMono: "RobotoMono-Regular";
+  --font-RobotoMono-Italic: "RobotoMono-italic";
+}

@@ -32,7 +32,7 @@ export default function Home() {
         <ContentCard details={item}/>
         )}
         ListEmptyComponent={
-        <Text className="text-black text-xl text-center mt-10">
+        <Text className="text-black text-xl text-center mt-10 font-app">
           Haulla ei löytynyt tuloksia
         </Text>
       }
@@ -48,7 +48,7 @@ export default function Home() {
             />
 
             <View className="bg-[#F6EFFF] items-center">
-              <Text className="pt-4 text-black font-bold text-5xl text-center">
+              <Text className="pt-4 text-black font-bold text-5xl text-center font-app">
                 VisitOulu
               </Text>
             </View>

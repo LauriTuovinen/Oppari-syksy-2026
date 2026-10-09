@@ -48,7 +48,7 @@ export default function ContentCard({ details }: { details: Place }) {
 
 		 return (
     <TouchableOpacity className="w-full" onPress={NavigateToPlaceDetails}>
-      <Card className="bg-[#E9DEF3] m-4 rounded-2xl">
+      <Card className="bg-[#E9DEF3] mx-6 mb-8 rounded-2xl">
         <Image
           className="w-full h-50 rounded-2xl"
           source={images[details.imageUri]}

@@ -57,7 +57,7 @@ export default function Places() {
           <ContentCard details={item} />
         )}
         ListHeaderComponent={
-          <View className="p-6 pt-10">
+          <View className="p-5 mx-4 mt-10">
             <Center>
               <VStack className="w-full">
                 <Heading size="3xl">
@@ -129,7 +129,7 @@ export default function Places() {
           </View>
         }
         ListEmptyComponent={
-          <Text className="text-black text-xl text-center mt-10">
+          <Text className="text-black text-xl text-center mt-4">
             Haulla tai suodattimella ei löytynyt tuloksia
           </Text>
         }
