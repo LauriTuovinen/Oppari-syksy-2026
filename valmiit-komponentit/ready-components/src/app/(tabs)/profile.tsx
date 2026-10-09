@@ -38,13 +38,9 @@ import {
   SelectDragIndicatorWrapper,
   SelectItem,
 } from '@/components/ui/select';
-import {
-  Avatar,
-  AvatarFallbackText,
-  AvatarImage,
-} from '@/components/ui/avatar';
+import { Avatar, AvatarFallbackText, AvatarImage, } from '@/components/ui/avatar';
 import { ChevronDownIcon } from '@/components/ui/icon';
-import { Heart } from "lucide-react-native";
+import { Heart, MapPin, Star } from "lucide-react-native";
 import { Icon } from '@/components/ui/icon';
 import { HStack } from '@/components/ui/hstack';
 import { VStack } from '@/components/ui/vstack';
@@ -166,53 +162,32 @@ export default function Profile() {
                       resizeMode="cover"
                       alt={place.placeName}
                       />
-                    <View className="flex-1 min-w-0">
-                      <VStack className='p-4 flex-1'>
-                      <Text className="text-xl font-bold text-black">
-                        {place.placeName}
-                      </Text>  
-                      <HStack className='justify-around '>
-                      <Text className="text-[#7D7D7D] mt-1">
-                        {place.rating}
-                      </Text>                      
-                      <TouchableOpacity
-                        onPress={() => setRemovePlaceId(place.id)}
-                        >
-                        <Icon
-                          as={Heart}
-                          size="xl"
-                          fill="#44126B"
-                          stroke="#44126B"
-                          />
-                      </TouchableOpacity>
-                      </HStack> 
-                      <Text className="text-[#7D7D7D] mt-1">
-                        {place.location}
-                      </Text>
-
-                        <AlertDialog isOpen={removePlaceId === place.id} onClose={handleClose}>
-                        <AlertDialogBackdrop />
-                        <AlertDialogContent className="bg-[#E9DEF3]">
-                          <AlertDialogHeader>
-                            <Heading className="text-foreground font-semibold text-lg mb-4">
-                              Poista suosikeista
-                            </Heading>
-                          </AlertDialogHeader>                            
-                          <Center>
-                            <Text size='xl' className="mb-4">Poistetaanko kohde suosikeista?</Text>
-                            <AlertDialogFooter className="flex-row justify-center gap-4">
-                              <Button onPress={() => { removeFavourite(place.id); handleClose(); }} className='w-24 bg-[#791BFD] rounded-full'>
-                                <ButtonText>Kyllä</ButtonText>
-                              </Button>
-                              <Button variant="outline" onPress={handleClose} className="w-24 bg-[#906aae] rounded-full">
-                                <ButtonText className='text-white'>ei</ButtonText>
-                              </Button>
-                            </AlertDialogFooter>
-                          </Center>
-                        </AlertDialogContent>
-                      </AlertDialog>
-                      </VStack>
-                    </View>
+                      <View className="flex-1 min-w-0">
+                        <VStack className="p-4 flex-1 justify-between">
+                          <Text className="text-xl font-bold text-black">
+                            {place.placeName}
+                          </Text>
+                          <HStack className="w-full items-center justify-between mt-auto">
+                            <HStack className="items-center">
+                              <Icon as={Star} size="md" stroke="#44126B" fill="#44126B"/>
+                              <Text className="text-[#7D7D7D] ml-1">
+                                {place.rating}
+                              </Text>
+                            </HStack>
+                            <TouchableOpacity
+                              onPress={() => setRemovePlaceId(place.id)}
+                            >
+                              <Icon as={Heart} size="xl" fill="#44126B" stroke="#44126B"/>
+                            </TouchableOpacity>
+                          </HStack>
+                          <HStack className="items-center mt-auto">
+                            <Icon as={MapPin} size="md" stroke="#44126B"/>
+                            <Text className="text-[#7D7D7D] ml-1">
+                              {place.location.split(",")[0]}
+                            </Text>
+                          </HStack>
+                        </VStack>
+                      </View>
 
                     </HStack>
                   </Box>
@@ -224,7 +199,7 @@ export default function Profile() {
         <TabsContent value="asetukset">
           <Box className="p-4">
             <Heading size='3xl' className="text-foreground text-center">Asetukset</Heading>
-              <Center className='flex-row justify-between'>
+              <Center className='flex-row justify-between m-4'>
                 <Text bold={true}>Tumma tila</Text>
                 <Switch
                   size="md"
@@ -234,7 +209,7 @@ export default function Profile() {
                   ios_backgroundColor="#d4d4d4"
                   />
                 </Center>
-                <Center className='flex-row justify-between'>
+                <Center className='flex-row justify-between mx-4'>
                 <Text bold={true}>Näytä ikä</Text>
                 <Switch
                   size="md"

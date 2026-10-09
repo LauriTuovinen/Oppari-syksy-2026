@@ -43,15 +43,11 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 
   const addFavourite = (place: Place) => {
     if (!user) return;
-
     setUserFavourites((current) => {
       const currentFavourites = current[user.userId] ?? [];
-
-      // Don't add the same place twice
       if (currentFavourites.some((item) => item.id === place.id)) {
         return current;
       }
-
       return {
         ...current,
         [user.userId]: [...currentFavourites, place],
@@ -61,10 +57,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 
   const removeFavourite = (id: number) => {
     if (!user) return;
-
     setUserFavourites((current) => {
       const currentFavourites = current[user.userId] ?? [];
-
       return {
         ...current,
         [user.userId]: currentFavourites.filter(
@@ -87,10 +81,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 
 export function useUser() {
   const context = useContext(UserContext);
-
   if (!context) {
     throw new Error('useUser must be used inside UserProvider');
   }
-
   return context;
 }
