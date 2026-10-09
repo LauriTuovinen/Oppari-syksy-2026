@@ -6,6 +6,7 @@
     "location": "kauppatori, Oulu",
     "rating": 4.5,
     "reviewCount": 120,
+    "tags": ["Perheille", "Keskusta"],
     "text": "Toripoliisi on Oulun kauppatorilla seisova tunnettu pronssipatsas, joka on myös Oulun tunnetuimpia maamerkkejä. Patsas on valmistettu vuonna 1987 ja se on Oulun kaupungin lahja kaupunkilaisille. Toripoliisi on suosittu kohde niin paikallisten kuin turistienkin keskuudessa, ja se symboloi Oulun torielämää ja sen historiaa."
   },
     {
@@ -15,6 +16,7 @@
     "location": "Nallikari, Oulu",
     "rating": 3.5,
     "reviewCount": 100,
+    "tags": ["Perheille"],
     "text": "Nallikarin majakka on Oulun Nallikarissa sijaitseva merkittävä merkki, joka toimii navigointimenetelmänä ja symboloi alueen historiaa."
   },
     {
@@ -24,6 +26,7 @@
     "location": "Nahkatehtaankatu 6, Oulu",
     "rating": 4,
     "reviewCount": 157,
+    "tags": ["Museot", "Perheille"],
     "text": "Tietomaa on Oulussa sijaitseva tiedekeskus, joka tarjoaa interaktiivisia näyttelyitä ja oppimiskokemuksia eri tieteenaloilta. Se on suosittu kohde niin paikallisten kuin turistienkin keskuudessa, ja se tarjoaa mahdollisuuden tutustua tieteeseen hauskalla ja opettavaisella tavalla."
   },
     {
@@ -33,6 +36,7 @@
     "location": "isokatu 25, Oulu",
     "rating": 2.5,
     "reviewCount": 220,
+    "tags": ["Ostokset", "Keskusta"],
     "text": "Valkea on Oulun keskustassa sijaitseva moderni kauppakeskus, joka tarjoaa monipuolisia ostosmahdollisuuksia ja palveluita. Se on suosittu kohde niin paikallisten kuin turistienkin keskuudessa, ja se tarjoaa viihtyisän ympäristön shoppailuun ja ajanviettoon."
   },
     {
@@ -42,6 +46,7 @@
     "location": "Ritaharjuntie 49, Oulu",
     "rating": 3.5,
     "reviewCount": 90,
+    "tags": ["Ostokset"],
     "text": "Siellä on käytävä"
   },
     {
@@ -51,6 +56,7 @@
     "location": "Myllytulli, Oulu",
     "rating": 4.5,
     "reviewCount": 172,
+    "tags": ["Luonto", "Puistot"],
     "text": "Hupisaaret on Oulun Hupisaarella sijaitseva suosittu kohde, joka tarjoaa kauniin näkymän ja viihtyisen ympäristön."
   },
     {
@@ -60,6 +66,7 @@
     "location": "Hietasaari, Oulu",
     "rating": 4,
     "reviewCount": 251,
+    "tags": ["Luonto"],
     "text": "Nallikari on Oulun Hietasaaressa sijaitseva suosittu ranta-alue, joka tarjoaa kauniin hiekkarannan ja monipuolisia ulkoilumahdollisuuksia. Se on suosittu kohde niin paikallisten kuin turistienkin keskuudessa, ja se tarjoaa mahdollisuuden nauttia auringosta, uimisesta ja erilaisista aktiviteeteista."
   },
     {
@@ -69,6 +76,7 @@
     "location": "Ydinkeskusta, Oulu",
     "rating": 3.5,
     "reviewCount": 132,
+    "tags": ["Keskusta"],
     "text": "Rotuaari on Oulun ydinkeskustassa sijaitseva kävelykatu, joka tarjoaa monipuolisia ostosmahdollisuuksia ja palveluita."
   },
     {
@@ -78,6 +86,7 @@
     "location": "uusikatu 24, Oulu",
     "rating": 5,
     "reviewCount": 300,
+    "tags": ["Keskusta"],
     "text": "Paska kaupunni graffiti on Oulun keskustassa sijaitseva tunnettu katutaideteos, joka on saanut paljon huomiota ja keskustelua osakseen. Se on suosittu kohde niin paikallisten kuin turistienkin keskuudessa, ja se symboloi kaupungin urbaania kulttuuria ja luovuutta."
   }
 ]
