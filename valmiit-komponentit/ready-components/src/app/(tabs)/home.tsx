@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { Image } from '@/components/ui/image';
 import { Text } from '@/components/ui/text';
 import { ScrollView } from '@/components/ui/scroll-view';
@@ -18,7 +18,12 @@ export default function Home() {
     
   );
   return (
-    <SafeAreaView className="bg-[#F6EFFF] flex-1">
+    <SafeAreaView edges={['left', 'right', 'bottom']} className="bg-[#F6EFFF] flex-1">
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
       <FlatList
         className='bg-[#F6EFFF]'
         data={filteredData}
@@ -38,7 +43,7 @@ export default function Home() {
           <>
             <Image
               source={require("@/assets/images/Oulu.jpg")}
-              className="w-full h-65"
+              className="w-full h-70"
               alt="Oulu"
             />
 

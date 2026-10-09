@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, ScrollView } from 'react-native';
+import { View, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
 import { useUser } from '../../context/UserContext';
 import { router } from 'expo-router';
 import { Text } from '@/components/ui/text';
@@ -87,6 +87,11 @@ export default function Profile() {
   return (      
   <ScrollView>
     <View className="flex-1 bg-[#F6EFFF] p-5 m-4 my-10 mb-28">
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
       <Heading size='3xl' className='text-left p-4'>Sinun profiilisi</Heading>
       <Center>
         <Avatar className="bg-pink-600 h-24 w-24">
@@ -179,6 +184,47 @@ export default function Profile() {
                             >
                               <Icon as={Heart} size="xl" fill="#44126B" stroke="#44126B"/>
                             </TouchableOpacity>
+                            <AlertDialog
+                              isOpen={removePlaceId === place.id}
+                              onClose={handleClose}
+                            >
+                              <AlertDialogBackdrop />
+                              <AlertDialogContent className="bg-[#E9DEF3]">
+                                <AlertDialogHeader>
+                                  <Heading className="text-foreground font-semibold text-lg mb-4">
+                                    Poista suosikeista
+                                  </Heading>
+                                </AlertDialogHeader>
+
+                                <Center>
+                                  <Text size="xl" className="mb-4">
+                                    Poistetaanko kohde suosikeista?
+                                  </Text>
+
+                                  <AlertDialogFooter className="flex-row justify-center gap-4">
+                                    <Button
+                                      onPress={() => {
+                                        removeFavourite(place.id);
+                                        handleClose();
+                                      }}
+                                      className="w-24 bg-[#791BFD] rounded-full"
+                                    >
+                                      <ButtonText>Kyllä</ButtonText>
+                                    </Button>
+
+                                    <Button
+                                      variant="outline"
+                                      onPress={handleClose}
+                                      className="w-24 bg-[#906aae] rounded-full"
+                                    >
+                                      <ButtonText className="text-white">
+                                        Ei
+                                      </ButtonText>
+                                    </Button>
+                                  </AlertDialogFooter>
+                                </Center>
+                              </AlertDialogContent>
+                            </AlertDialog>
                           </HStack>
                           <HStack className="items-center mt-auto">
                             <Icon as={MapPin} size="md" stroke="#44126B"/>

@@ -25,7 +25,7 @@ export default function TabsLayout() {
       <View className="flex-1 bg-[#F6EFFF]">
         <Slot />
 
-          <View className="absolute bottom-0 left-0 right-0 h-32 bg-[#E9DEF3]">
+          <View className="absolute bottom-0 left-0 right-0 h-20 bg-[#E9DEF3]">
             <Tabs
               value={currentTab}
               onValueChange={(value: string) => {

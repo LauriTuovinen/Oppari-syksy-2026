@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, FlatList } from 'react-native';
+import { View, TouchableOpacity, FlatList, StatusBar } from 'react-native';
 import { Text } from '@/components/ui/text';
 import { Heading } from '@/components/ui/heading';
 import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input';
@@ -43,7 +43,12 @@ export default function Places() {
     return matchesSearch && matchesTag;
   });
   return (
-          <View className="flex-1 bg-[#F6EFFF]">
+    <View className="flex-1 bg-[#F6EFFF]">
+        <StatusBar
+          translucent
+          backgroundColor="transparent"
+          barStyle="light-content"
+        />
       <FlatList
         className="bg-[#F6EFFF]"
         data={filteredData}
@@ -129,7 +134,7 @@ export default function Places() {
           </Text>
         }
         contentContainerStyle={{
-          paddingBottom: 120,
+          paddingBottom: 90,
         }}
         keyboardShouldPersistTaps="handled"
       />
