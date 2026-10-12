@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1,
+    "imageUri": "Toripolliisi.jpg",
+    "placeName": "Toripolliisi patsas",
+    "location": "kauppatori, Oulu",
+    "rating": 4.5,
+    "reviewCount": 120,
+    "tags": ["Perheille", "Keskusta"],
+    "text": "Toripoliisi on Oulun kauppatorilla seisova tunnettu pronssipatsas, joka on myös Oulun tunnetuimpia maamerkkejä. Patsas on valmistettu vuonna 1987 ja se on Oulun kaupungin lahja kaupunkilaisille. Toripoliisi on suosittu kohde niin paikallisten kuin turistienkin keskuudessa, ja se symboloi Oulun torielämää ja sen historiaa."
+  },
+    {
+    "id": 2,
+    "imageUri": "Nallikarin-majakka.jpg",
+    "placeName": "Nallikarin majakka",
+    "location": "Nallikari, Oulu",
+    "rating": 3.5,
+    "reviewCount": 100,
+    "tags": ["Perheille"],
+    "text": "Nallikarin majakka on Oulun Nallikarissa sijaitseva merkittävä merkki, joka toimii navigointimenetelmänä ja symboloi alueen historiaa."
+  },
+    {
+    "id": 3,
+    "imageUri": "tietomaa.jpg",
+    "placeName": "Tiedekeskus Tietomaa",
+    "location": "Nahkatehtaankatu 6, Oulu",
+    "rating": 4,
+    "reviewCount": 157,
+    "tags": ["Museot", "Perheille"],
+    "text": "Tietomaa on Oulussa sijaitseva tiedekeskus, joka tarjoaa interaktiivisia näyttelyitä ja oppimiskokemuksia eri tieteenaloilta. Se on suosittu kohde niin paikallisten kuin turistienkin keskuudessa, ja se tarjoaa mahdollisuuden tutustua tieteeseen hauskalla ja opettavaisella tavalla."
+  },
+    {
+    "id": 4,
+    "imageUri": "Valkea.jpg",
+    "placeName": "Valkea",
+    "location": "isokatu 25, Oulu",
+    "rating": 2.5,
+    "reviewCount": 220,
+    "tags": ["Ostokset", "Keskusta"],
+    "text": "Valkea on Oulun keskustassa sijaitseva moderni kauppakeskus, joka tarjoaa monipuolisia ostosmahdollisuuksia ja palveluita. Se on suosittu kohde niin paikallisten kuin turistienkin keskuudessa, ja se tarjoaa viihtyisän ympäristön shoppailuun ja ajanviettoon."
+  },
+    {
+    "id": 5,
+    "imageUri": "Ideapark.jpg",
+    "placeName": "Ideapark",
+    "location": "Ritaharjuntie 49, Oulu",
+    "rating": 3.5,
+    "reviewCount": 90,
+    "tags": ["Ostokset"],
+    "text": "Siellä on käytävä"
+  },
+    {
+    "id": 6,
+    "imageUri": "Ainolanpuisto.jpg",
+    "placeName": "Hupisaaret",
+    "location": "Myllytulli, Oulu",
+    "rating": 4.5,
+    "reviewCount": 172,
+    "tags": ["Luonto", "Puistot"],
+    "text": "Hupisaaret on Oulun Hupisaarella sijaitseva suosittu kohde, joka tarjoaa kauniin näkymän ja viihtyisen ympäristön."
+  },
+    {
+    "id": 7,
+    "imageUri": "Nallikari.jpg",
+    "placeName": "Nallikari",
+    "location": "Hietasaari, Oulu",
+    "rating": 4,
+    "reviewCount": 251,
+    "tags": ["Luonto"],
+    "text": "Nallikari on Oulun Hietasaaressa sijaitseva suosittu ranta-alue, joka tarjoaa kauniin hiekkarannan ja monipuolisia ulkoilumahdollisuuksia. Se on suosittu kohde niin paikallisten kuin turistienkin keskuudessa, ja se tarjoaa mahdollisuuden nauttia auringosta, uimisesta ja erilaisista aktiviteeteista."
+  },
+    {
+    "id": 8,
+    "imageUri": "rotuaari.jpg",
+    "placeName": "Rotuaari",
+    "location": "Ydinkeskusta, Oulu",
+    "rating": 3.5,
+    "reviewCount": 132,
+    "tags": ["Keskusta"],
+    "text": "Rotuaari on Oulun ydinkeskustassa sijaitseva kävelykatu, joka tarjoaa monipuolisia ostosmahdollisuuksia ja palveluita."
+  },
+    {
+    "id": 9,
+    "imageUri": "PaskaKaupunni.jpg",
+    "placeName": "Paska kaupunni graffiti",
+    "location": "uusikatu 24, Oulu",
+    "rating": 5,
+    "reviewCount": 300,
+    "tags": ["Keskusta"],
+    "text": "Paska kaupunni graffiti on Oulun keskustassa sijaitseva tunnettu katutaideteos, joka on saanut paljon huomiota ja keskustelua osakseen. Se on suosittu kohde niin paikallisten kuin turistienkin keskuudessa, ja se symboloi kaupungin urbaania kulttuuria ja luovuutta."
+  },
+  {
+    "id": 10,
+    "imageUri": "OulunTuomiokirkko.jpg",
+    "placeName": "Oulun tuomiokirkko",
+    "location": "Kirkkokatu 3 A, Oulu",
+    "rating": 4.5,
+    "reviewCount": 185,
+    "tags": ["Historia", "Kulttuuri"],
+    "text": "Oulun tuomiokirkko on kaupungin keskustassa sijaitseva historiallinen kirkko. Se tunnetaan kauniista arkkitehtuuristaan ja rauhallisesta tunnelmastaan."
+  },
+  {
+    "id": 11,
+    "imageUri": "OulunKaupungintalo.jpg",
+    "placeName": "Oulun kaupungintalo",
+    "location": "Kirkkokatu 2 A, Oulu",
+    "rating": 4,
+    "reviewCount": 76,
+    "tags": ["Historia", "Arkkitehtuuri"],
+    "text": "Oulun kaupungintalo on keskustassa sijaitseva näyttävä rakennus, joka toimii kaupungin hallinnon tilana. Sen historiallinen arkkitehtuuri tekee siitä kiinnostavan nähtävyyden."
+  },
+  {
+    "id": 12,
+    "imageUri": "PikisaarenVanhaPuukaupunki.jpg",
+    "placeName": "Pikisaari",
+    "location": "Pikisaari, Oulu",
+    "rating": 4.5,
+    "reviewCount": 143,
+    "tags": ["Historia", "Luonto"],
+    "text": "Pikisaari on idyllinen kaupunginosa, joka tunnetaan vanhoista puutaloistaan, taiteilijoistaan ja merellisestä tunnelmastaan. Saarella voi kävellä rauhallisilla kaduilla ja tutustua paikalliseen kulttuuriin."
+  },
+  {
+    "id": 13,
+    "imageUri": "OulunKauppahalli.jpg",
+    "placeName": "Oulun kauppahalli",
+    "location": "Kauppatori, Oulu",
+    "rating": 4,
+    "reviewCount": 112,
+    "tags": ["Ruoka", "Historia", "Keskusta"],
+    "text": "Oulun kauppahalli sijaitsee kauppatorin vieressä ja tarjoaa paikallisia tuotteita, herkkuja ja pieniä liikkeitä. Se on mukava paikka tutustua alueen ruokakulttuuriin."
+  },
+  {
+    "id": 14,
+    "imageUri": "Ainolanpuisto.jpg",
+    "placeName": "Ainolanpuisto",
+    "location": "Myllytulli, Oulu",
+    "rating": 4.5,
+    "reviewCount": 198,
+    "tags": ["Luonto", "Puistot", "Perheille"],
+    "text": "Ainolanpuisto on vehreä puisto lähellä Oulun keskustaa. Sen kävelyreitit, istutukset ja rauhallinen ympäristö sopivat rentoutumiseen ja ulkoiluun."
+  },
+  {
+    "id": 15,
+    "imageUri": "OulunKaupunginkirjasto.jpg",
+    "placeName": "Oulun pääkirjasto",
+    "location": "Kaarlenväylä 3, Oulu",
+    "rating": 4,
+    "reviewCount": 94,
+    "tags": ["Kulttuuri", "Sisäaktiviteetit"],
+    "text": "Oulun pääkirjasto tarjoaa kirjoja, opiskelutiloja ja monipuolisia kulttuuripalveluita. Se sijaitsee keskustan tuntumassa ja sopii myös rauhalliseen työskentelyyn."
+  },
+  {
+    "id": 16,
+    "imageUri": "OulunTeatteri.jpg",
+    "placeName": "Oulun teatteri",
+    "location": "Kaarlenväylä 2, Oulu",
+    "rating": 4,
+    "reviewCount": 108,
+    "tags": ["Kulttuuri", "Sisäaktiviteetit"],
+    "text": "Oulun teatteri tarjoaa teatteriesityksiä ja elämyksiä eri-ikäisille kävijöille. Ohjelmistossa on erilaisia näytelmiä ja muita esityksiä."
+  },
+  {
+    "id": 17,
+    "imageUri": "OulunTaidemuseo.jpg",
+    "placeName": "Oulun taidemuseo",
+    "location": "Kasarmintie 9, Oulu",
+    "rating": 4,
+    "reviewCount": 87,
+    "tags": ["Museot", "Kulttuuri"],
+    "text": "Oulun taidemuseossa voi tutustua suomalaiseen ja kansainväliseen taiteeseen sekä vaihtuviin näyttelyihin. Se tarjoaa kiinnostavan vierailukohteen taiteesta pitäville."
+  },
+  {
+    "id": 18,
+    "imageUri": "Toppilansalmi.jpg",
+    "placeName": "Toppilansalmi",
+    "location": "Toppilansalmi, Oulu",
+    "rating": 4,
+    "reviewCount": 69,
+    "tags": ["Luonto", "Merelliset kohteet"],
+    "text": "Toppilansalmi on merellinen alue, jossa voi ihailla vesistöä ja modernia asuinrakentamista. Alue sopii kävelyretkille ja maisemien katseluun."
+  },
+  {
+    "id": 19,
+    "imageUri": "Hietasaari.jpg",
+    "placeName": "Hietasaari",
+    "location": "Hietasaari, Oulu",
+    "rating": 4,
+    "reviewCount": 116,
+    "tags": ["Luonto", "Ulkoilu"],
+    "text": "Hietasaari tarjoaa metsäisiä polkuja, ulkoilureittejä ja merellisiä maisemia lähellä Oulun keskustaa. Se sopii kävelyyn, pyöräilyyn ja luonnosta nauttimiseen."
+  },
+  {
+    "id": 20,
+    "imageUri": "Koitelinkoski.jpg",
+    "placeName": "Koitelinkoski",
+    "location": "Koitelinkoskentie, Kiiminki",
+    "rating": 4.5,
+    "reviewCount": 240,
+    "tags": ["Luonto", "Ulkoilu"],
+    "text": "Koitelinkoski on Kiimingissä sijaitseva koskialue, joka tunnetaan kuohuvasta vedestään, silloistaan ja kauniista luonnostaan. Se sopii päiväretkelle ja valokuvaukseen."
+  },
+  {
+    "id": 21,
+    "imageUri": " Turkansaari.jpg",
+    "placeName": "Turkansaaren ulkomuseo",
+    "location": "Turkansaarentie 165, Oulu",
+    "rating": 4,
+    "reviewCount": 91,
+    "tags": ["Museot", "Historia", "Perheille"],
+    "text": "Turkansaaren ulkomuseossa voi tutustua pohjoispohjalaiseen maaseutuelämään ja vanhoihin rakennuksiin. Museoympäristö kertoo alueen historiasta ja perinteistä."
+  },
+  {
+    "id": 22,
+    "imageUri": "NallikariTalvi.jpg",
+    "placeName": "Nallikarin talvimaisemat",
+    "location": "Nallikari, Oulu",
+    "rating": 4,
+    "reviewCount": 83,
+    "tags": ["Luonto", "Talvi", "Ulkoilu"],
+    "text": "Nallikari tarjoaa talvella avaria merimaisemia ja mahdollisuuden nauttia rannikon talvisesta luonnosta. Sääolosuhteet vaikuttavat siihen, millaisia ulkoiluaktiviteetteja alueella voi harrastaa."
+  },
+  {
+    "id": 23,
+    "imageUri": "RotuaarinPallo.jpg",
+    "placeName": "Rotuaarin aukio",
+    "location": "Rotuaari, Oulu",
+    "rating": 3.5,
+    "reviewCount": 104,
+    "tags": ["Keskusta", "Tapahtumat"],
+    "text": "Rotuaarin aukio on keskustan kohtaamispaikka, jossa järjestetään tapahtumia ja jossa ihmiset viettävät aikaa. Aukio sijaitsee kävelykatujen ja kauppojen ympäröimänä."
+  },
+  {
+    "id": 24,
+    "imageUri": "Ouluhalli.jpg",
+    "placeName": "Ouluhalli",
+    "location": "Ouluhallintie 20, Oulu",
+    "rating": 4,
+    "reviewCount": 128,
+    "tags": ["Urheilu", "Sisäaktiviteetit"],
+    "text": "Ouluhalli on suuri liikunta- ja tapahtumapaikka, jossa järjestetään urheilutoimintaa, messuja ja muita tapahtumia. Tarjonta vaihtelee tapahtumakalenterin mukaan."
+  },
+  {
+    "id": 25,
+    "imageUri": "RaatinStadion.jpg",
+    "placeName": "Raatin stadion",
+    "location": "Raatintie 2, Oulu",
+    "rating": 4,
+    "reviewCount": 97,
+    "tags": ["Urheilu", "Tapahtumat"],
+    "text": "Raatin stadion on urheilupaikka Oulujoen läheisyydessä. Stadionilla järjestetään yleisurheilua, jalkapalloa ja erilaisia urheilutapahtumia."
+  },
+  {
+    "id": 26,
+    "imageUri": "Oulujoki.jpg",
+    "placeName": "Oulujokivarren ulkoilureitit",
+    "location": "Oulujokivarsi, Oulu",
+    "rating": 4.5,
+    "reviewCount": 135,
+    "tags": ["Luonto", "Ulkoilu"],
+    "text": "Oulujoen varrella on maisemallisia ulkoilureittejä, joilla voi kävellä ja pyöräillä sekä nauttia jokimaisemista. Reitit tarjoavat vaihtelua kaupungin vilkkaammille alueille."
+  },
+  {
+    "id": 27,
+    "imageUri": "Linnanmaa.jpg",
+    "placeName": "Oulun yliopiston Linnanmaan kampus",
+    "location": "Pentti Kaiteran katu 1, Oulu",
+    "rating": 4,
+    "reviewCount": 72,
+    "tags": ["Koulutus", "Arkkitehtuuri"],
+    "text": "Linnanmaan kampus on Oulun yliopiston pääkampus ja suuri opiskelijoiden kohtaamispaikka. Alueella on opetustiloja, palveluita ja yliopiston toimintaa."
+  },
+  {
+    "id": 28,
+    "imageUri": "OulunSatama.jpg",
+    "placeName": "Oulun satama",
+    "location": "Oritkari, Oulu",
+    "rating": 3.5,
+    "reviewCount": 61,
+    "tags": ["Merelliset kohteet", "Teollisuus"],
+    "text": "Oulun satama on tärkeä tavaraliikenteen keskus Perämeren rannalla. Satama-alue kertoo kaupungin merenkulun ja teollisuuden merkityksestä."
+  },
+  {
+    "id": 29,
+    "imageUri": "MerikoskenVoimalaitos.jpg",
+    "placeName": "Merikosken voimalaitos",
+    "location": "Pikisaaren läheisyys, Oulu",
+    "rating": 4,
+    "reviewCount": 88,
+    "tags": ["Historia", "Tekniikka"],
+    "text": "Merikosken voimalaitos sijaitsee Oulujoen varrella ja on tärkeä osa kaupungin energiantuotannon historiaa. Alueella voi tutustua jokimaisemiin ja voimalaitoksen ulkopuolelta näkyvään rakenteeseen."
+  }
+]
