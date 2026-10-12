@@ -5,13 +5,13 @@ const baseStyle = isWeb
   : '';
 
 export const headingStyle = tva({
-  base: `font-RobotoMono text-foreground font-bold font-heading tracking-sm my-0 ${baseStyle}`,
+  base: `font-heading text-foreground font-bold font-heading tracking-sm my-0 ${baseStyle}`,
   variants: {
     isTruncated: {
       true: 'truncate',
     },
     bold: {
-      true: 'font-bold',
+      true: 'font-roboto-mono-bold',
     },
     underline: {
       true: 'underline',

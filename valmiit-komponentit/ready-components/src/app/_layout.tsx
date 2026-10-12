@@ -6,8 +6,9 @@ import { useFonts } from 'expo-font';
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
-    'RobotoMono-Regular': require('../../assets/fonts/RobotoMono-VariableFont_wght.ttf'),
-    'RobotoMono-Italic': require('../../assets/fonts/RobotoMono-Italic-VariableFont_wght.ttf'),
+    'RobotoMono-Regular': require('../../assets/fonts/roboto-mono-latin-200-normal.ttf'),
+    'RobotoMono-Bold': require('../../assets/fonts/roboto-mono-latin-700-normal.ttf'),
+    'RobotoMono-Italic': require('../../assets/fonts/roboto-mono-latin-700-italic.ttf'),
   });
 
   if (!fontsLoaded) {

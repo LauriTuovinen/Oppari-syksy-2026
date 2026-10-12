@@ -7,6 +7,7 @@ import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { SearchIcon } from '@/components/ui/icon';
 import { FlatList } from "react-native";
+import { Heading } from "@/components/ui/heading"
 import data from "../../data/Data.json";
 import ContentCard from "../(tabs)/contentCard";
 
@@ -32,7 +33,7 @@ export default function Home() {
         <ContentCard details={item}/>
         )}
         ListEmptyComponent={
-        <Text className="text-black text-xl text-center mt-10 font-app">
+        <Text className="text-black text-xl text-center mt-10">
           Haulla ei löytynyt tuloksia
         </Text>
       }
@@ -48,9 +49,9 @@ export default function Home() {
             />
 
             <View className="bg-[#F6EFFF] items-center">
-              <Text className="pt-4 text-black font-bold text-5xl text-center font-app">
+              <Heading className="pt-4 text-black text-5xl text-center">
                 VisitOulu
-              </Text>
+              </Heading>
             </View>
 
             <View className="bg-[#F6EFFF] w-full">
@@ -64,6 +65,7 @@ export default function Home() {
                   </InputSlot>
 
                   <InputField
+                    style={{ fontFamily: "RobotoMono-Regular" }}
                     className="text-white text-xl placeholder:text-gray-200"
                     placeholder="Etsi..."
                     value={search}
@@ -72,7 +74,7 @@ export default function Home() {
                 </Input>
               </View>
 
-              <Text className="text-black font-bold text-2xl mt-4 px-4 py-4">
+              <Text className="text-black text-2xl mt-4 px-4 py-4">
                 Parhaat paikat lähellä
               </Text>
             </View>

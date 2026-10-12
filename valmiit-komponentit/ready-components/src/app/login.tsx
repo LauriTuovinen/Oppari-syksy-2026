@@ -11,6 +11,14 @@ import { RotateCw, Lock, Mail  } from 'lucide-react-native';
 import { router } from 'expo-router';
 import users from '../data/Users.json';
 import { useUser } from '../context/UserContext';
+import {
+  Checkbox,
+  CheckboxIndicator,
+  CheckboxLabel,
+  CheckboxIcon,
+} from '@/components/ui/checkbox';
+import { CheckIcon } from '@/components/ui/icon';
+import { Center } from '@/components/ui/center'
 
 
 export default function Login() {
@@ -21,6 +29,7 @@ export default function Login() {
   const [emailError, setEmailError] = React.useState(false);
   const [passError, setPassError] = React.useState(false);
   const { setUser } = useUser();
+  const [values, setValues] = React.useState(['Remember']);
 
   const handleState = () => {
     setShowPassword((showState) => {
@@ -75,7 +84,8 @@ export default function Login() {
               <Input className={`bg-[#E9DEF3] p-2 rounded-2xl ${
                 emailError ? 'border-red-500' : ''
               }`}>
-                <InputField                   
+                <InputField  
+                  style={{ fontFamily: "RobotoMono-Regular" }}                 
                   type="text"
                   value={email}
                   onChangeText={(text) => {
@@ -94,6 +104,7 @@ export default function Login() {
               passError ? 'border-red-500':''
             }`}>
               <InputField 
+                style={{ fontFamily: "RobotoMono-Regular" }}
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChangeText={(text)=>{
@@ -107,19 +118,26 @@ export default function Login() {
                 <InputIcon stroke={'black'} as={showPassword ? EyeIcon : EyeOffIcon} />
               </InputSlot>
             </Input>
-
+              <Center className='mt-4'>
+                <Checkbox value="Remember" isDisabled={false} isInvalid={false}>
+                  <CheckboxIndicator className='stroke-black border-black border-2 h-5 w-5'>
+                    <CheckboxIcon as={CheckIcon} />
+                  </CheckboxIndicator>
+                  <CheckboxLabel className='font-bold'>Muista minut</CheckboxLabel>
+                </Checkbox>
+              </Center>
             </VStack>
             {error !== '' && (
-              <Text className="text-red-600 text-center">
+              <Text bold={true} className="text-red-600 text-center">
                 {error}
               </Text>
             )}
             <Button onPress={handleLogin} className="m-auto mt-20 py-4 px-14 rounded-4xl bg-[#791BFD]">
-              <ButtonText className='text-2xl'>Kirjaudu</ButtonText>
+              <ButtonText style={{ fontFamily: "RobotoMono-Regular" }} className='text-2xl'>Kirjaudu</ButtonText>
             </Button>
             <Button className="m-auto py-4 px-10 rounded-4xl bg-[#791BFD]">
               <Icon as={RotateCw} size='xl' className='text-white'></Icon>
-              <ButtonText className='text-2xl'>Kirjaudu</ButtonText>
+              <ButtonText style={{ fontFamily: "RobotoMono-Regular" }} className='text-2xl'>Kirjaudu</ButtonText>
             </Button>
           </VStack>
         </FormControl>

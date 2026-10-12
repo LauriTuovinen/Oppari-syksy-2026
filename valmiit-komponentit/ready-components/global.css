@@ -115,6 +115,10 @@
 
 @theme {
   --font-sans: "RobotoMono-Regular";
-  --font-RobotoMono: "RobotoMono-Regular";
-  --font-RobotoMono-Italic: "RobotoMono-italic";
+  --font-body: "RobotoMono-Regular";
+  --font-heading: "RobotoMono-Bold";
+
+  --font-roboto-mono: "RobotoMono-Regular";
+  --font-roboto-mono-bold: "RobotoMono-Bold";
+  --font-roboto-mono-bold-italic: "RobotoMono-BoldItalic";
 }

@@ -7,6 +7,7 @@ import { View} from 'react-native';
 import { router } from "expo-router";
 import { Icon } from '@/components/ui/icon';
 import { Star } from "lucide-react-native";
+import { Spinner } from '@/components/ui/spinner';
 
 type Place = {
   id: number;
@@ -31,7 +32,8 @@ const images: Record<string, any> = {
 };
 
 export default function ContentCard({ details }: { details: Place }) {
-		const NavigateToPlaceDetails = () => {
+	const imageSource = images[details.imageUri];	
+  const NavigateToPlaceDetails = () => {
 			router.push({
 				pathname: "/place-details",
 				params: {
@@ -49,14 +51,20 @@ export default function ContentCard({ details }: { details: Place }) {
 		 return (
     <TouchableOpacity className="w-full" onPress={NavigateToPlaceDetails}>
       <Card className="bg-[#E9DEF3] mx-6 mb-8 rounded-2xl">
-        <Image
-          className="w-full h-50 rounded-2xl"
-          source={images[details.imageUri]}
-          resizeMode="cover"
-          alt={details.placeName}
-        />
+        <View className="w-full h-50 rounded-2xl bg-[#D8C7E8] items-center justify-center overflow-hidden">
+          {imageSource ? (
+            <Image
+              className="w-full h-full rounded-2xl"
+              source={imageSource}
+              resizeMode="cover"
+              alt={details.placeName}
+            />
+          ) : (
+            <Spinner size="large" color="#44126B" />
+          )}
+        </View>
         <View className="flex-row items-center w-full">
-          <Text className="text-black text-2xl font-bold flex-1">
+          <Text className="text-black text-2xl flex-1">
             {details.placeName}
           </Text>
           <View className="flex-row items-center">
@@ -65,7 +73,7 @@ export default function ContentCard({ details }: { details: Place }) {
               size="xl"
               className="text-[#44126B] fill-[#44126B]"
             />
-            <Text className="text-black text-2xl font-bold ml-1">
+            <Text className="text-black text-2xl ml-1">
               {details.rating}
             </Text>
           </View>

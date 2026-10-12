@@ -112,10 +112,10 @@ export default function PlaceDetails() {
               </View>
               <View className='flex-row items-center'>
                 <Icon as={Star} size='xl' className='text-[#44126B] fill-[#44126B]'/>
-                <Text className='font-bold text-xl text-black'>{rating}</Text>
+                <Text className=' text-xl text-black'>{rating}</Text>
               </View>
             </View>
-            <Text className='mt-6 text-xl text-black'>{text}</Text>
+            <Text className='mt-6 text-xl text-[#6F7D78]'>{text}</Text>
           </View>
         </View>
       </ScrollView>

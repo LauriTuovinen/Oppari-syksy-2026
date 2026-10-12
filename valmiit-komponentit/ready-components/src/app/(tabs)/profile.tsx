@@ -119,15 +119,15 @@ export default function Profile() {
       </Center>
       <Tabs variant="underlined" defaultValue="suosikit" className="w-full">
       <TabsList className="bg-[#F6EFFF]" contentContainerClassName="w-full flex-row justify-around"
-    contentContainerStyle={{
-      flexGrow: 1,
-      justifyContent: 'space-around',
-    }}>
+        contentContainerStyle={{
+          flexGrow: 1,
+          justifyContent: 'space-around',
+        }}>
         <TabsTrigger value="suosikit">
-          <TabsTriggerText bold={true}>Suosikit</TabsTriggerText>
+          <TabsTriggerText style={{ fontFamily: "RobotoMono-Regular" }} bold={true}>Suosikit</TabsTriggerText>
         </TabsTrigger>
         <TabsTrigger value="asetukset">
-          <TabsTriggerText>Asetukset</TabsTriggerText>
+          <TabsTriggerText style={{ fontFamily: "RobotoMono-Regular" }}>Asetukset</TabsTriggerText>
         </TabsTrigger>
         <TabsIndicator />
       </TabsList>
@@ -169,7 +169,7 @@ export default function Profile() {
                       />
                       <View className="flex-1 min-w-0">
                         <VStack className="p-4 flex-1 justify-between">
-                          <Text className="text-xl font-bold text-black">
+                          <Text className="text-xl text-black">
                             {place.placeName}
                           </Text>
                           <HStack className="w-full items-center justify-between mt-auto">
@@ -246,7 +246,7 @@ export default function Profile() {
           <Box className="p-4">
             <Heading size='3xl' className="text-foreground text-center">Asetukset</Heading>
               <Center className='flex-row justify-between m-4'>
-                <Text bold={true}>Tumma tila</Text>
+                <Text>Tumma tila</Text>
                 <Switch
                   size="md"
                   isDisabled={false}
@@ -256,7 +256,7 @@ export default function Profile() {
                   />
                 </Center>
                 <Center className='flex-row justify-between mx-4'>
-                <Text bold={true}>Näytä ikä</Text>
+                <Text>Näytä ikä</Text>
                 <Switch
                   size="md"
                   value={showAge}
@@ -273,12 +273,12 @@ export default function Profile() {
                 onValueChange={handleGenderChange}
                 >
                 <SelectTrigger variant="underlined" size="md">
-                  <SelectInput className="font-bold text-black" placeholder="Valitse sukupuoli" />
+                  <SelectInput style={{ fontFamily: "RobotoMono-Regular" }} className="font-bold text-black" placeholder="Valitse sukupuoli" />
                   <SelectIcon className="mr-3 text-black" as={ChevronDownIcon} />
                 </SelectTrigger>
                 <SelectPortal>
                   <SelectBackdrop/>
-                  <SelectContent className="bg-[#C8CEE9] font-bold text-black">
+                  <SelectContent className="bg-[#C8CEE9] text-black">
                     <SelectDragIndicatorWrapper>
                       <SelectDragIndicator />
                     </SelectDragIndicatorWrapper>
@@ -290,9 +290,9 @@ export default function Profile() {
               </Select>
             <Button
               onPress={() => setShowAlertDialog(true)}
-              className="m-auto mt-10 py-4 px-14 rounded-4xl bg-[#791BFD]"
+              className="m-auto mt-10 py-4 px-10 rounded-4xl bg-[#791BFD]"
               >
-              <ButtonText className="text-2xl">
+              <ButtonText style={{ fontFamily: "RobotoMono-Regular" }} className="text-xl">
                 Kirjaudu ulos
               </ButtonText>
             </Button>
