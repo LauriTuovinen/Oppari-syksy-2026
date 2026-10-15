@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card';
 import { Image } from '@/components/ui/image';
 import { Text } from '@/components/ui/text';
 import { TouchableOpacity } from 'react-native';
-import { View} from 'react-native';
+import { View } from 'react-native';
 import { router } from "expo-router";
 import { Icon } from '@/components/ui/icon';
 import { Star } from "lucide-react-native";

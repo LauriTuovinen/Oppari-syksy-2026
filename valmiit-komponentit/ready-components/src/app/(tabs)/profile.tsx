@@ -65,7 +65,6 @@ const userImages: Record<string, any> = {
 export default function Profile() {
   const { user, setUser, favourites, removeFavourite } = useUser();
   const [showAlertDialog, setShowAlertDialog] = React.useState(false);
-  const [showRemoveDialog, setShowRemoveDialog] = React.useState(false);
   const [removePlaceId, setRemovePlaceId] = React.useState<number | null>(null);
   const [showAge, setShowAge] = React.useState(true);
   const handleClose = () => { setShowAlertDialog(false); setRemovePlaceId(null); };
@@ -126,7 +125,7 @@ export default function Profile() {
         <TabsTrigger value="suosikit">
           <TabsTriggerText style={{ fontFamily: "RobotoMono-Regular" }} bold={true}>Suosikit</TabsTriggerText>
         </TabsTrigger>
-        <TabsTrigger value="asetukset">
+        <TabsTrigger value="asetukset" testID="settings-tab">
           <TabsTriggerText style={{ fontFamily: "RobotoMono-Regular" }}>Asetukset</TabsTriggerText>
         </TabsTrigger>
         <TabsIndicator />
@@ -195,12 +194,10 @@ export default function Profile() {
                                     Poista suosikeista
                                   </Heading>
                                 </AlertDialogHeader>
-
                                 <Center>
                                   <Text size="xl" className="mb-4">
                                     Poistetaanko kohde suosikeista?
                                   </Text>
-
                                   <AlertDialogFooter className="flex-row justify-center gap-4">
                                     <Button
                                       onPress={() => {
@@ -211,7 +208,6 @@ export default function Profile() {
                                     >
                                       <ButtonText>Kyllä</ButtonText>
                                     </Button>
-
                                     <Button
                                       variant="outline"
                                       onPress={handleClose}
@@ -272,7 +268,7 @@ export default function Profile() {
                 selectedValue={user?.gender}
                 onValueChange={handleGenderChange}
                 >
-                <SelectTrigger variant="underlined" size="md">
+                <SelectTrigger testID="gender-select-trigger" variant="underlined" size="md">
                   <SelectInput style={{ fontFamily: "RobotoMono-Regular" }} className="font-bold text-black" placeholder="Valitse sukupuoli" />
                   <SelectIcon className="mr-3 text-black" as={ChevronDownIcon} />
                 </SelectTrigger>
@@ -282,9 +278,9 @@ export default function Profile() {
                     <SelectDragIndicatorWrapper>
                       <SelectDragIndicator />
                     </SelectDragIndicatorWrapper>
-                    <SelectItem label="Nainen" value="Nainen" />
-                    <SelectItem label="Mies" value="Mies" />
-                    <SelectItem label="En halua sanoa" value="En halua sanoa" />
+                    <SelectItem testID="gender-option-nainen" label="Nainen" value="Nainen" />
+                    <SelectItem testID="gender-option-mies" label="Mies" value="Mies" />
+                    <SelectItem testID="gender-option-en-halua-sanoa" label="En halua sanoa" value="En halua sanoa" />
                   </SelectContent>
                 </SelectPortal>
               </Select>
