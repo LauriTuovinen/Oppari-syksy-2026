@@ -62,7 +62,7 @@ const checkboxLabelStyle = tva({
 });
 
 const checkboxIconStyle = tva({
-  base: 'text-primary-foreground fill-none h-3.5 w-3.5',
+  base: 'text-primary-foreground fill-none h-3.5 w-3.5 stroke-black',
 });
 
 const CheckboxGroup = UICheckbox.Group;

@@ -44,6 +44,7 @@ import { Heart, MapPin, Star } from "lucide-react-native";
 import { Icon } from '@/components/ui/icon';
 import { HStack } from '@/components/ui/hstack';
 import { VStack } from '@/components/ui/vstack';
+import { Card } from '@/components/ui/card';
 
 const userImages: Record<string, any> = {
   "profileFemale.jpg": require("../../../assets/images/profileFemale.jpg"),
@@ -158,21 +159,22 @@ export default function Profile() {
                 }
                 className="mb-4"
                 >
-                  <Box className="bg-[#C8CEE9] rounded-2xl h-40">
-                    <HStack>
+                  <Box className="bg-[#C8CEE9] rounded-2xl h-30">
+                    <HStack className="h-full items-stretch">
                     <Image
                       source={images[place.imageUri]}
-                      className="w-40 h-40 rounded-xl"
+                      className="w-30 h-30 rounded-xl"
                       resizeMode="cover"
                       alt={place.placeName}
                       />
                       <View className="flex-1 min-w-0">
-                        <VStack className="p-4 flex-1 justify-between">
-                          <Text className="text-xl text-black">
+                        <VStack className="flex-1 min-w-0 p-3 justify-between">
+                          <Text className="text-lg text-black" numberOfLines={2} ellipsizeMode="tail">
                             {place.placeName}
                           </Text>
+                          
                           <HStack className="w-full items-center justify-between mt-auto">
-                            <HStack className="items-center">
+                            <HStack className="flex-row items-center min-w-0">
                               <Icon as={Star} size="md" stroke="#44126B" fill="#44126B"/>
                               <Text className="text-[#7D7D7D] ml-1">
                                 {place.rating}
@@ -180,6 +182,8 @@ export default function Profile() {
                             </HStack>
                             <TouchableOpacity
                               onPress={() => setRemovePlaceId(place.id)}
+                              accessibilityRole="button"
+                              accessibilityLabel={`Poista ${place.placeName} suosikeista`}
                             >
                               <Icon as={Heart} size="xl" fill="#44126B" stroke="#44126B"/>
                             </TouchableOpacity>
@@ -222,7 +226,7 @@ export default function Profile() {
                               </AlertDialogContent>
                             </AlertDialog>
                           </HStack>
-                          <HStack className="items-center mt-auto">
+                          <HStack className="mt-auto w-full items-center min-w-0">
                             <Icon as={MapPin} size="md" stroke="#44126B"/>
                             <Text className="text-[#7D7D7D] ml-1">
                               {place.location.split(",")[0]}
