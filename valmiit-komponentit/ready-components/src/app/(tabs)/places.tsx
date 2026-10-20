@@ -63,15 +63,15 @@ export default function Places() {
                 <Heading size="3xl">
                   Tutustu Oulun Nähtävyyksiin
                 </Heading>
-                <Input className="mt-8 rounded-full px-4 py-1 bg-[#d2a6f4]">
+                <Input className="mt-8 border-b-[#44126B] border-b-4 rounded-none border-t-0 border-x-0 px-4 py-1">
                   <InputSlot>
                     <InputIcon
-                      className="text-black h-10 w-10"
+                      className="text-[#44126B] h-10 w-10"
                       as={SearchIcon}
                     />
                   </InputSlot>
                   <InputField
-                    className="text-white text-xl placeholder:text-gray-200"
+                    className="text-black text-xl placeholder:text-[#44126B]"
                     placeholder="Etsi..."
                     value={search}
                     onChangeText={setSearch}
@@ -80,7 +80,7 @@ export default function Places() {
                 <View className="flex-row justify-center flex-wrap mt-4">
                   <TouchableOpacity
                     onPress={() => setSelectedTags([])}
-                    className={`mr-2 mb-2 rounded-full px-4 py-2 ${
+                    className={`mr-2 mb-2 rounded-none px-4 py-2 ${
                       selectedTags.length === 0
                         ? 'bg-[#44126B]'
                         : 'bg-[#E9DEF3]'
@@ -108,7 +108,7 @@ export default function Places() {
                               : [...current, tag]
                           );
                         }}
-                        className={`mr-2 mb-2 rounded-full px-6 py-2 ${
+                        className={`mr-2 mb-2 rounded-none px-6 py-2 ${
                           isSelected
                             ? 'bg-[#44126B]'
                             : 'bg-[#E9DEF3]'

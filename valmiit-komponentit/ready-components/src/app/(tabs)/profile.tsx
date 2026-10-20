@@ -44,7 +44,6 @@ import { Heart, MapPin, Star } from "lucide-react-native";
 import { Icon } from '@/components/ui/icon';
 import { HStack } from '@/components/ui/hstack';
 import { VStack } from '@/components/ui/vstack';
-import { Card } from '@/components/ui/card';
 
 const userImages: Record<string, any> = {
   "profileFemale.jpg": require("../../../assets/images/profileFemale.jpg"),

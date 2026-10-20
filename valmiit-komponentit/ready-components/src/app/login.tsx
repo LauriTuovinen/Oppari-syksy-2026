@@ -111,8 +111,7 @@ export default function Login() {
                 }}
                 placeholder="Salasana"
                 placeholderTextColor="#44126B"
-                keyboardType="password"
-              />
+                keyboardType="Password"/>
               <InputSlot className="pr-3" onPress={handleState}>
                 <InputIcon stroke={'#44126B'} as={showPassword ? EyeIcon : EyeOffIcon} />
               </InputSlot>
