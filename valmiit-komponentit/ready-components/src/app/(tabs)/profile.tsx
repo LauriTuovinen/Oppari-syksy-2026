@@ -44,6 +44,7 @@ import { Heart, MapPin, Star } from "lucide-react-native";
 import { Icon } from '@/components/ui/icon';
 import { HStack } from '@/components/ui/hstack';
 import { VStack } from '@/components/ui/vstack';
+import { Spinner } from '@/components/ui/spinner';
 
 const userImages: Record<string, any> = {
   "profileFemale.jpg": require("../../../assets/images/profileFemale.jpg"),
@@ -68,6 +69,7 @@ export default function Profile() {
   const [removePlaceId, setRemovePlaceId] = React.useState<number | null>(null);
   const [showAge, setShowAge] = React.useState(true);
   const handleClose = () => { setShowAlertDialog(false); setRemovePlaceId(null); };
+  const [activeTab, setActiveTab] = React.useState('suosikit');
 
   const handleSignOut = () => {
     setUser(null);
@@ -85,7 +87,7 @@ export default function Profile() {
 
   return (      
   <ScrollView>
-    <View className="flex-1 bg-[#F6EFFF] p-5 m-4 my-10 mb-28">
+    <View className="flex-1 bg-[#F6EFFF] my-10 mb-28">
       <StatusBar
         translucent
         backgroundColor="transparent"
@@ -116,19 +118,23 @@ export default function Profile() {
           </Text>
         </View>
       </Center>
-      <Tabs variant="underlined" defaultValue="suosikit" className="w-full">
-      <TabsList className="bg-[#F6EFFF]" contentContainerClassName="w-full flex-row justify-around"
+      <Tabs value={activeTab} onValueChange={setActiveTab} variant="filled" className="w-full">
+      <TabsList equalWidth className="bg-[#F6EFFF] p-0 mt-6 h-15" contentContainerClassName="w-full bg-[#e4c1ff] flex-row justify-around"
         contentContainerStyle={{
           flexGrow: 1,
           justifyContent: 'space-around',
         }}>
-        <TabsTrigger value="suosikit">
-          <TabsTriggerText style={{ fontFamily: "RobotoMono-Regular" }} bold={true}>Suosikit</TabsTriggerText>
+        
+        <TabsTrigger className={`rounded-none items-center justify-center${
+        activeTab === 'suosikit' ? ' bg-[#44126B]' : 'bg-[#e4c1ff]'}`} value="suosikit">
+          <TabsTriggerText style={{ fontFamily: "RobotoMono-Regular", color: activeTab === 'suosikit' ? '#FFFFFF' : '#44126B', }}>Suosikit</TabsTriggerText>
         </TabsTrigger>
-        <TabsTrigger value="asetukset" testID="settings-tab">
-          <TabsTriggerText style={{ fontFamily: "RobotoMono-Regular" }}>Asetukset</TabsTriggerText>
+
+        <TabsTrigger className={`rounded-none items-center justify-center${
+        activeTab === 'asetukset' ? ' bg-[#44126B]' : 'bg-[#e4c1ff]'}`} value="asetukset" testID="settings-tab">
+          <TabsTriggerText style={{ fontFamily: "RobotoMono-Regular", color: activeTab === 'asetukset' ? '#FFFFFF' : '#44126B', }}>Asetukset</TabsTriggerText>
         </TabsTrigger>
-        <TabsIndicator />
+
       </TabsList>
        <TabsContentWrapper>
         <TabsContent value="suosikit">            
@@ -158,14 +164,18 @@ export default function Profile() {
                 }
                 className="mb-4"
                 >
-                  <Box className="bg-[#C8CEE9] rounded-2xl h-30">
+                  <Box className="bg-[#C8CEE9] rounded-2xl h-30 mx-8">
                     <HStack className="h-full items-stretch">
+                    {images[place.imageUri]? (
                     <Image
                       source={images[place.imageUri]}
                       className="w-30 h-30 rounded-xl"
                       resizeMode="cover"
                       alt={place.placeName}
                       />
+                      ) : (
+                        <Spinner size="large" color="#44126B" className="w-30 h-30"/>
+                      )}
                       <View className="flex-1 min-w-0">
                         <VStack className="flex-1 min-w-0 p-3 justify-between">
                           <Text className="text-lg text-black" numberOfLines={2} ellipsizeMode="tail">
@@ -227,7 +237,7 @@ export default function Profile() {
                           </HStack>
                           <HStack className="mt-auto w-full items-center min-w-0">
                             <Icon as={MapPin} size="md" stroke="#44126B"/>
-                            <Text className="text-[#7D7D7D] ml-1">
+                            <Text className="text-[#7D7D7D] ml-1" numberOfLines={1} ellipsizeMode="tail">
                               {place.location.split(",")[0]}
                             </Text>
                           </HStack>

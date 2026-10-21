@@ -151,6 +151,7 @@ const TabsList = React.forwardRef<
   const context = React.useContext(TabsContext);
 
   const flatListRef = useRef<any>(null);
+  const [listWidth, setListWidth] = React.useState(0);
 
   if (!context) return null;
 
@@ -246,7 +247,14 @@ const TabsList = React.forwardRef<
     return (
       <View
         ref={listRef}
-        className={tabsListStyle({ orientation, class: className })}
+        onLayout={(event) =>
+          setListWidth(event.nativeEvent.layout.width)
+        }
+        className={tabsListStyle({
+          orientation,
+          className: undefined,
+          class: `w-full ${className ?? ''}`,
+        })}
       >
         {indicator}
 
@@ -254,13 +262,39 @@ const TabsList = React.forwardRef<
           ref={flatListRef}
           horizontal
           data={triggers}
-          renderItem={({ item }) => item as any}
+          renderItem={({ item }) => {
+            if (!React.isValidElement(item) || listWidth <= 0) {
+              return item as any;
+            }
+
+            const trigger = item as React.ReactElement<any>;
+            const triggerWidth =
+              listWidth / Math.max(triggers.length, 1);
+
+            return React.cloneElement(trigger, {
+              style: [
+                trigger.props.style,
+                {
+                  width: triggerWidth,
+                  flexGrow: 0,
+                  flexShrink: 0,
+                  height: '100%',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                },
+              ],
+            });
+          }}
           keyExtractor={(item: any, index) =>
             item?.props?.value ?? `tab-${index}`
           }
           showsHorizontalScrollIndicator={false}
           scrollEventThrottle={16}
-          style={{ zIndex: 100 }}
+          style={{ zIndex: 100, flex: 1 }}
+          contentContainerStyle={[
+            { flexGrow: 1 },
+            (props as any).contentContainerStyle,
+          ]}
           onScroll={
             Platform.OS === 'web' ? handleWebScroll : nativeScrollHandler
           }
