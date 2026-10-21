@@ -1,17 +1,41 @@
 import "../../../global.css";
+import React, { useEffect, useState } from "react";
 import { Slot, usePathname, router } from "expo-router";
-import { View, Text } from "react-native";
 import {
   Tabs,
   TabsList,
   TabsTrigger,
   TabsIndicator,
 } from "@/components/ui/tabs";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Keyboard,
+} from "react-native";
 import { Icon } from "@/components/ui/icon";
 import { House, MapPinSearch, User } from "lucide-react-native";
 
 export default function TabsLayout() {
   const pathname = usePathname();
+  const [keyboardVisible, setKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+    const showSubscription = Keyboard.addListener(
+      "keyboardDidShow",
+      () => setKeyboardVisible(true)
+    );
+
+    const hideSubscription = Keyboard.addListener(
+      "keyboardDidHide",
+      () => setKeyboardVisible(false)
+    );
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
 
   const currentTab =
     pathname === "/places"
@@ -20,79 +44,71 @@ export default function TabsLayout() {
         ? "profile"
         : "home";
 
+  const showNavbar =
+    ["/home", "/places", "/profile"].includes(pathname) &&
+    !keyboardVisible;
+
+  const navigate = (route: "/home" | "/places" | "/profile") => {
+    if (pathname !== route) {
+      router.replace(route);
+    }
+  };
 
   return (
-      <View className="flex-1 bg-[#F6EFFF]">
-        <Slot />
+          <View className="flex-1 bg-[#F6EFFF]">
+      <Slot />
 
-          <View className="absolute bottom-0 left-0 right-0 h-20 bg-[#E9DEF3]">
-            <Tabs
-              value={currentTab}
-              onValueChange={(value: string) => {
-                if (value === "home") {
-                  router.replace("/home");
-                } else if (value === "places") {
-                  router.replace("/places");
-                } else if (value === "profile") {
-                  router.replace("/profile");
-                }
-              }}
-              variant="underlined"
-            >
-              <TabsList
-                className="bg-[#E9DEF3] w-full"
-                contentContainerClassName="w-full flex-row justify-around items-center"
-                contentContainerStyle={{
-                  flexGrow: 1,
-                  justifyContent: "space-around",
-                }}
-              >
-                <TabsTrigger
-                  value="home"
-                  className="flex-1 flex-col items-center justify-center"
-                >
-                  <Icon
-                    as={House}
-                    size="xl"
-                    className="text-[#44126B]"
-                  />
-                  <Text className="text-[#44126B] text-[18px]">
-                    Koti
-                  </Text>
-                </TabsTrigger>
+      {showNavbar && (
+        <View className="absolute bottom-0 left-0 right-0 h-20 bg-[#E9DEF3] flex-row items-center justify-around">
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityState={{ selected: currentTab === "home" }}
+            onPress={() => navigate("/home")}
+            className="flex-1 h-full items-center justify-center"
+          >
+            <Icon
+              as={House}
+              size="xl"
+              className="text-[#44126B]"
+            />
+            <Text className="text-[#44126B] text-lg">
+              Koti
+            </Text>
+          </TouchableOpacity>
 
-                <TabsTrigger
-                  value="places"
-                  className="flex-1 flex-col items-center justify-center"
-                >
-                  <Icon
-                    as={MapPinSearch}
-                    size="xl"
-                    className="text-[#44126B]"
-                  />
-                  <Text className="text-[#44126B] text-[18px]">
-                    Paikat
-                  </Text>
-                </TabsTrigger>
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityState={{ selected: currentTab === "places" }}
+            onPress={() => navigate("/places")}
+            className="flex-1 h-full items-center justify-center"
+          >
+            <Icon
+              as={MapPinSearch}
+              size="xl"
+              className="text-[#44126B]"
+            />
+            <Text className="text-[#44126B] text-lg">
+              Paikat
+            </Text>
+          </TouchableOpacity>
 
-                <TabsTrigger
-                  value="profile"
-                  className="flex-1 flex-col items-center justify-center"
-                >
-                  <Icon
-                    as={User}
-                    size="xl"
-                    className="text-[#44126B]"
-                  />
-                  <Text className="text-[#44126B] text-[18px]">
-                    Profiili
-                  </Text>
-                </TabsTrigger>
-
-                <TabsIndicator />
-              </TabsList>
-            </Tabs>
-          </View>
-      </View>
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityState={{ selected: currentTab === "profile" }}
+            onPress={() => navigate("/profile")}
+            className="flex-1 h-full items-center justify-center"
+          >
+            <Icon
+              as={User}
+              size="xl"
+              className="text-[#44126B]"
+            />
+            <Text className="text-[#44126B] text-lg">
+              Profiili
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
+    </View>
   );
 }

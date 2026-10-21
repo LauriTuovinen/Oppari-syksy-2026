@@ -9,6 +9,8 @@ import { Text } from '@/components/ui/text';
 import { Toast, ToastTitle, ToastDescription, useToast, } from '@/components/ui/toast';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import { useUser } from '../../context/UserContext';
+import { HStack } from '@/components/ui/hstack';
+import { Spinner } from '@/components/ui/spinner';
 
 export default function PlaceDetails() {
   const {
@@ -91,25 +93,33 @@ export default function PlaceDetails() {
       }}
       showsVerticalScrollIndicator={true}>
         <View>
+          {images[imageName] ? (
           <Image
-            className="w-full h-100"
+            className="w-full h-90"
             source={images[imageName as string]}
             resizeMode="cover"
             size='2xl'
             alt='placeName'
           /> 
+          ) : (
+            <Spinner size="large" color="#44126B" className="w-40 h-40"/>
+          )}
           <View className='bg-[#F6EFFF] rounded-t-4xl -mt-10 px-6 pt-6 pb-10'>
+            <HStack>
+              <View className='flex-row items-start flex-1 min-w-0'>
+                <Icon as={MapPin} size='xl' className='text-[#44126B]'/>
+                <Text numberOfLines={2} ellipsizeMode="tail" className='text-xl text-black'>{location}</Text>
+              </View>
+              <View className=" items-end pt-0.5">
+                <TouchableOpacity onPress={handleFavourite}>
+                  <Icon as={Heart} size='xl' fill={favourite ? '#44126B' : 'transparent'} stroke={'#44126B'}></Icon>
+                </TouchableOpacity>
+              </View>
+            </HStack>
             <View className='flex-row justify-between items-center'>   
               <Text className='pt-8 pb-4 text-5xl text-black font-bold'>{placeName}</Text>
-              <TouchableOpacity onPress={handleFavourite}>
-                <Icon as={Heart} size='xl' fill={favourite ? '#44126B' : 'transparent'} stroke={'#44126B'}></Icon>
-              </TouchableOpacity>
             </View>
             <View className='flex-row justify-between items-center w-full'>
-              <View className='flex-row items-center'>
-                <Icon as={MapPin} size='xl' className='text-[#44126B]'/>
-                <Text className='text-xl text-black'>{location}</Text>
-              </View>
               <View className='flex-row items-center'>
                 <Icon as={Star} size='xl' className='text-[#44126B] fill-[#44126B]'/>
                 <Text className=' text-xl text-black'>{rating}</Text>

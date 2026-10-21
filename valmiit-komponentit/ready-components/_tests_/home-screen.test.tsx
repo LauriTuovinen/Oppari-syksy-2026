@@ -1,11 +1,10 @@
 import { render } from '@testing-library/react-native';
-
-import  Home  from '@/app/(tabs)/home';
+import Home from '../src/app/(tabs)/home';
 
 describe('<Home />', () => {
-  test('Text renders correctly on HomeScreen', async () => {
+  test('renders the Home screen', async () => {
     const { getByText } = await render(<Home />);
 
-    getByText('Welcome!');
+    expect(getByText('VisitOulu')).toBeTruthy();
   });
 });

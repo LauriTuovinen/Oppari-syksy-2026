@@ -11,12 +11,7 @@ import { RotateCw, Lock, Mail  } from 'lucide-react-native';
 import { router } from 'expo-router';
 import users from '../data/Users.json';
 import { useUser } from '../context/UserContext';
-import {
-  Checkbox,
-  CheckboxIndicator,
-  CheckboxLabel,
-  CheckboxIcon,
-} from '@/components/ui/checkbox';
+import { Checkbox, CheckboxIndicator, CheckboxLabel, CheckboxIcon, } from '@/components/ui/checkbox';
 import { CheckIcon } from '@/components/ui/icon';
 import { Center } from '@/components/ui/center'
 
@@ -29,7 +24,7 @@ export default function Login() {
   const [emailError, setEmailError] = React.useState(false);
   const [passError, setPassError] = React.useState(false);
   const { setUser } = useUser();
-  const [values, setValues] = React.useState(['Remember']);
+  const [rememberMe, setRememberMe] = React.useState(false);
 
   const handleState = () => {
     setShowPassword((showState) => {
@@ -76,16 +71,17 @@ export default function Login() {
       style={{ opacity: 0.6 }}
     />
       <View className="flex-1 items-center justify-center">
-        <Heading size="5xl" className=''>VisitOulu</Heading>
+        <Heading size="5xl" className='mb-10'>VisitOulu</Heading>
           <FormControl className="p-4 w-full">
-            <VStack className="gap-4">
+            <VStack className="gap-6">
             <VStack space="xs">
-              
-              <Input className={`bg-[#E9DEF3] p-2 rounded-2xl ${
+              <Input className={`border-b-[#44126B] border-b-4 rounded-none border-t-0 border-x-0 ${
                 emailError ? 'border-red-500' : ''
-              }`}>
+              }`}>                
+              <InputIcon as={Mail} stroke={'#44126B'} className='h-7 w-7'/>
                 <InputField  
-                  style={{ fontFamily: "RobotoMono-Regular" }}                 
+                  testID="email-input"
+                  style={{ fontFamily: "RobotoMono-Bold" }}                 
                   type="text"
                   value={email}
                   onChangeText={(text) => {
@@ -93,18 +89,20 @@ export default function Login() {
                     setEmailError(false);
                   }}
                   placeholder="Sähköposti"
+                  placeholderTextColor="#44126B"
                   autoCapitalize="none"
-                  keyboardType="email-address" />
-                <InputIcon as={Mail} stroke={'black'}/>
+                  keyboardType="email-address"/>
               </Input>
             </VStack>
             <VStack space="xs">
               
-            <Input className={`bg-[#E9DEF3] p-2 rounded-2xl ${
+            <Input className={`border-b-[#44126B] border-b-4 rounded-none border-t-0 border-x-0 ${
               passError ? 'border-red-500':''
-            }`}>
+            }`}>              
+            <InputIcon as={Lock} stroke={'#44126B'} className='h-7 w-7'/>
               <InputField 
-                style={{ fontFamily: "RobotoMono-Regular" }}
+                testID="password-input"
+                style={{ fontFamily: "RobotoMono-Bold" }}
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChangeText={(text)=>{
@@ -112,16 +110,16 @@ export default function Login() {
                   setPassError(false);
                 }}
                 placeholder="Salasana"
-              />
-              <InputIcon as={Lock} stroke={'black'}/>
+                placeholderTextColor="#44126B"
+                keyboardType="Password"/>
               <InputSlot className="pr-3" onPress={handleState}>
-                <InputIcon stroke={'black'} as={showPassword ? EyeIcon : EyeOffIcon} />
+                <InputIcon stroke={'#44126B'} as={showPassword ? EyeIcon : EyeOffIcon} />
               </InputSlot>
             </Input>
               <Center className='mt-4'>
-                <Checkbox value="Remember" isDisabled={false} isInvalid={false}>
-                  <CheckboxIndicator className='stroke-black border-black border-2 h-5 w-5'>
-                    <CheckboxIcon as={CheckIcon} />
+                <Checkbox testID="login-checkbox" value="Remember" isChecked={rememberMe} onChange={setRememberMe} isDisabled={false} isInvalid={false}>
+                  <CheckboxIndicator className='data-[checked=true]:bg-white data-[checked=true]:border-black stroke-black border-black border-2 rounded-none h-6 w-6'>
+                    <CheckboxIcon as={CheckIcon}/>
                   </CheckboxIndicator>
                   <CheckboxLabel className='font-bold'>Muista minut</CheckboxLabel>
                 </Checkbox>
@@ -132,11 +130,7 @@ export default function Login() {
                 {error}
               </Text>
             )}
-            <Button onPress={handleLogin} className="m-auto mt-20 py-4 px-14 rounded-4xl bg-[#791BFD]">
-              <ButtonText style={{ fontFamily: "RobotoMono-Regular" }} className='text-2xl'>Kirjaudu</ButtonText>
-            </Button>
-            <Button className="m-auto py-4 px-10 rounded-4xl bg-[#791BFD]">
-              <Icon as={RotateCw} size='xl' className='text-white'></Icon>
+            <Button testID="login-button" onPress={handleLogin} className="m-auto mt-20 py-4 px-14 rounded-none bg-[#44126B]">
               <ButtonText style={{ fontFamily: "RobotoMono-Regular" }} className='text-2xl'>Kirjaudu</ButtonText>
             </Button>
           </VStack>

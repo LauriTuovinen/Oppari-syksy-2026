@@ -16,8 +16,8 @@ export default function Home() {
 
   const filteredData = data.filter((item) =>
     item.placeName.toLowerCase().includes(search.toLowerCase())
-    
   );
+
   return (
     <SafeAreaView edges={['left', 'right', 'bottom']} className="bg-[#F6EFFF] flex-1">
       <StatusBar
@@ -44,7 +44,7 @@ export default function Home() {
           <>
             <Image
               source={require("@/assets/images/Oulu.jpg")}
-              className="w-full h-70"
+              className="w-full h-60"
               alt="Oulu"
             />
 
@@ -56,17 +56,17 @@ export default function Home() {
 
             <View className="bg-[#F6EFFF] w-full">
               <View className="items-center px-6">
-                <Input className="mt-4 rounded-full px-4 py-1 bg-[#d2a6f4]">
+                <Input className="mt-4 border-b-[#44126B] border-b-4 rounded-none border-t-0 border-x-0 px-4 py-1">
                   <InputSlot>
                     <InputIcon
-                      className="text-black h-10 w-10"
+                      className="text-[#44126B] h-10 w-10"
                       as={SearchIcon}
                     />
                   </InputSlot>
 
                   <InputField
                     style={{ fontFamily: "RobotoMono-Regular" }}
-                    className="text-white text-xl placeholder:text-gray-200"
+                    className="text-black text-xl placeholder:text-[#44126B]"
                     placeholder="Etsi..."
                     value={search}
                     onChangeText={setSearch}
