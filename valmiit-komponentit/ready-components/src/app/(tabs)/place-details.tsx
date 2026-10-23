@@ -69,7 +69,7 @@ export default function PlaceDetails() {
     location: Array.isArray(location) ? location[0] : location,
     rating: Number(Array.isArray(rating) ? rating[0] : rating),
     reviewCount: Number(
-      Array.isArray(reviewCount) ? reviewCount[0] : reviewCount
+      Array.isArray(reviewCount) ? reviewCount[0] : reviewCount,
     ),
     text: Array.isArray(text) ? text[0] : text,
   };

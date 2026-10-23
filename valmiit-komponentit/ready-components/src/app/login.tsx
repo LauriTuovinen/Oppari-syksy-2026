@@ -15,7 +15,6 @@ import { Checkbox, CheckboxIndicator, CheckboxLabel, CheckboxIcon, } from '@/com
 import { CheckIcon } from '@/components/ui/icon';
 import { Center } from '@/components/ui/center'
 
-
 export default function Login() {
   const [showPassword, setShowPassword] = React.useState(false);
   const [email, setEmail] = React.useState('');
