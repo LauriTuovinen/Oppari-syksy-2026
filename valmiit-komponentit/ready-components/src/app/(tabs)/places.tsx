@@ -81,18 +81,12 @@ export default function Places() {
                   <TouchableOpacity
                     onPress={() => setSelectedTags([])}
                     className={`mr-2 mb-2 rounded-none px-4 py-2 ${
-                      selectedTags.length === 0
-                        ? 'bg-[#44126B]'
-                        : 'bg-[#E9DEF3]'
-                    }`}
-                  >
+                      selectedTags.length === 0 ? 'bg-[#44126B]' : 'bg-[#E9DEF3]'
+                    }`}>
                     <Text
                       className={
-                        selectedTags.length === 0
-                          ? 'text-white font-semibold'
-                          : 'text-black font-semibold'
-                      }
-                    >
+                        selectedTags.length === 0 ? 'text-white font-semibold' : 'text-black font-semibold'
+                      }>
                       Kaikki
                     </Text>
                   </TouchableOpacity>
@@ -109,9 +103,7 @@ export default function Places() {
                           );
                         }}
                         className={`mr-2 mb-2 rounded-none px-6 py-2 ${
-                          isSelected
-                            ? 'bg-[#44126B]'
-                            : 'bg-[#E9DEF3]'
+                          isSelected ? 'bg-[#44126B]' : 'bg-[#E9DEF3]'
                         }`}
                       >
                         <Text className={isSelected ? 'text-white font-semibold' : 'text-black font-semibold'}>

@@ -95,7 +95,7 @@ export default function Profile() {
       />
       <Heading size='3xl' className='text-left p-4'>Sinun profiilisi</Heading>
       <Center>
-        <Avatar className="bg-pink-600 h-24 w-24">
+        <Avatar className="bg-pink-600 h-24 w-24 border-4 border-[#44126B]">
           <AvatarFallbackText className="text-2xl">{user?.name}</AvatarFallbackText>
             <AvatarImage
               source={user?.profilePicture ? userImages[user.profilePicture] : undefined}/>
@@ -201,14 +201,9 @@ export default function Profile() {
                               onClose={handleClose}
                             >
                               <AlertDialogBackdrop />
-                              <AlertDialogContent className="bg-[#E9DEF3]">
-                                <AlertDialogHeader>
-                                  <Heading className="text-foreground font-semibold text-lg mb-4">
-                                    Poista suosikeista
-                                  </Heading>
-                                </AlertDialogHeader>
+                              <AlertDialogContent className="bg-[#E9DEF3] rounded-none">
                                 <Center>
-                                  <Text size="xl" className="mb-4">
+                                  <Text size="xl" bold={true} className="mb-8">
                                     Poistetaanko kohde suosikeista?
                                   </Text>
                                   <AlertDialogFooter className="flex-row justify-center gap-4">
@@ -217,14 +212,14 @@ export default function Profile() {
                                         removeFavourite(place.id);
                                         handleClose();
                                       }}
-                                      className="w-24 bg-[#791BFD] rounded-full"
+                                      className="w-24 bg-[#44126B] rounded-none"
                                     >
                                       <ButtonText>Kyllä</ButtonText>
                                     </Button>
                                     <Button
                                       variant="outline"
                                       onPress={handleClose}
-                                      className="w-24 bg-[#906aae] rounded-full"
+                                      className="w-24 bg-[#C8CEE9] rounded-none"
                                     >
                                       <ButtonText className="text-white">
                                         Ei
@@ -287,19 +282,31 @@ export default function Profile() {
                 </SelectTrigger>
                 <SelectPortal>
                   <SelectBackdrop/>
-                  <SelectContent className="bg-[#C8CEE9] text-black">
-                    <SelectDragIndicatorWrapper>
-                      <SelectDragIndicator />
-                    </SelectDragIndicatorWrapper>
-                    <SelectItem testID="gender-option-nainen" label="Nainen" value="Nainen" />
-                    <SelectItem testID="gender-option-mies" label="Mies" value="Mies" />
-                    <SelectItem testID="gender-option-en-halua-sanoa" label="En halua sanoa" value="En halua sanoa" />
-                  </SelectContent>
+                    <SelectContent className="bg-[#C8CEE9] text-black rounded-none border-4 border-[#44126B] p-0">
+                      <SelectItem 
+                        testID="gender-option-nainen" 
+                        label="Nainen" 
+                        value="Nainen" 
+                        className="data-[checked=true]:bg-[#d09ff5]"
+                      />
+                      <SelectItem 
+                        testID="gender-option-mies" 
+                        label="Mies" 
+                        value="Mies" 
+                        className="border-t-2 rounded-none data-[checked=true]:bg-[#d09ff5]"
+                      />
+                      <SelectItem 
+                        testID="gender-option-en-halua-sanoa" 
+                        label="En halua sanoa" 
+                        value="En halua sanoa" 
+                        className="border-t-2 rounded-none data-[checked=true]:bg-[#d09ff5]"
+                      />
+                    </SelectContent>
                 </SelectPortal>
               </Select>
             <Button
               onPress={() => setShowAlertDialog(true)}
-              className="m-auto mt-10 py-4 px-10 rounded-4xl bg-[#791BFD]"
+              className="m-auto mt-10 py-4 px-10 rounded-none bg-[#791BFD]"
               >
               <ButtonText style={{ fontFamily: "RobotoMono-Regular" }} className="text-xl">
                 Kirjaudu ulos

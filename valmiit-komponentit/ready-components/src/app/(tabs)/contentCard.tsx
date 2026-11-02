@@ -38,41 +38,35 @@ export default function ContentCard({ details }: { details: Place }) {
 	const imageSource = images[details.imageUri];	
   
   const NavigateToPlaceDetails = () => {
-			router.push({
-				pathname: "/place-details",
-				params: {
-					id: details.id.toString(),
-					imageUri: details.imageUri,
-					placeName: details.placeName,
-					location: details.location,
-					rating: details.rating.toString(),
-					reviewCount: details.reviewCount.toString(),
-					text: details.text,
-				},
-			});
-		}
+    router.push({
+      pathname: "/place-details",
+      params: {
+        id: details.id.toString(),
+        imageUri: details.imageUri,
+        placeName: details.placeName,
+        location: details.location,
+        rating: details.rating.toString(),
+        reviewCount: details.reviewCount.toString(),
+        text: details.text,
+      },
+    });
+  };
   
-    const toast = useToast();
-    const handleToast = () => {
-      toast.show({
-        placement: "top",
-        duration: 3000,
-        render: ({ id }) => (
-          <Toast nativeID={`toast-${id}`} action="success" variant="solid">
-            <ToastTitle>Onnistui</ToastTitle>
-            <ToastDescription>
-              Kohde lisätty suosikkeihin
-            </ToastDescription>
-          </Toast>
-        ),
-      });
-    };
+  const toast = useToast();
+  const handleToast = () => {
+    toast.show({
+      placement: "top",
+      duration: 3000,
+      render: ({ id }) => (
+        <Toast nativeID={`toast-${id}`} action="success" variant="solid">
+          <ToastTitle>Onnistui</ToastTitle>
+          <ToastDescription>Kohde lisätty suosikkeihin</ToastDescription>
+        </Toast>
+      ),
+    });
+  };
   
-  const {
-    addFavourite,
-    removeFavourite,
-    isFavourite,
-  } = useUser();
+  const { addFavourite, removeFavourite, isFavourite } = useUser();
 
   const favourite = isFavourite(details.id);
 
