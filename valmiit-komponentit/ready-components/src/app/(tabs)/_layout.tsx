@@ -1,12 +1,6 @@
 import "../../../global.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Slot, usePathname, router } from "expo-router";
-import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsIndicator,
-} from "@/components/ui/tabs";
 import { View, TouchableOpacity, Keyboard, } from "react-native";
 import { Icon } from "@/components/ui/icon";
 import { House, MapPinSearch, User } from "lucide-react-native";
